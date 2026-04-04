@@ -85,11 +85,13 @@ MCB AI là nền tảng AI content & marketing automation của người Việt,
 
 | | |
 |--|--|
-| 🌐 Website | [mcbai.vn](https://mcbai.vn) |
+| 🌐 Website | [mcbai.vn](https://www.mcbai.vn/) |
 | 📘 Fanpage | [facebook.com/mcb.ai.vn](https://www.facebook.com/mcb.ai.vn/) |
+| 🎬 YouTube | [youtube.com/@mcbaivn](https://www.youtube.com/@mcbaivn) |
 | 🛠️ OpenClaw Cheatsheet | [openclaw.mcbai.vn](https://openclaw.mcbai.vn/) |
 | 🎓 Khoá học OpenClaw 101 | [openclaw.mcbai.vn/openclaw101](https://openclaw.mcbai.vn/openclaw101) |
 | 👥 Cộng đồng Facebook | [OpenClaw AI Kiếm Cơm](https://www.facebook.com/groups/openclawxvn) |
+| 📱 MCB AI Academy (Zalo) | [zalo.me/g/mmqkhi259](https://zalo.me/g/mmqkhi259) |
 
 ---
 
@@ -99,4 +101,4 @@ Có skill hay muốn chia sẻ? Tạo Pull Request hoặc liên hệ qua Fanpage
 
 ---
 
-<p align="center">Made with ❤️ by <a href="https://mcbai.vn">MCB AI</a> &nbsp;·&nbsp; <a href="https://openclaw.mcbai.vn/openclaw101">Học OpenClaw 101 →</a></p>
+<p align="center">Made with ❤️ by <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp; <a href="https://openclaw.mcbai.vn/openclaw101">Học OpenClaw 101 →</a> &nbsp;·&nbsp; <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy</a></p>

@@ -155,8 +155,10 @@ python -m pip install -U yt-dlp
 ---
 
 <p align="center">
-  <a href="https://mcbai.vn">MCB AI</a> &nbsp;·&nbsp;
+  <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp;
+  <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp;
   <a href="https://openclaw.mcbai.vn">OpenClaw Cheatsheet</a> &nbsp;·&nbsp;
   <a href="https://openclaw.mcbai.vn/openclaw101">Khoá học OpenClaw 101</a> &nbsp;·&nbsp;
-  <a href="https://www.facebook.com/groups/openclawxvn">Cộng đồng Facebook</a>
+  <a href="https://www.facebook.com/groups/openclawxvn">Cộng đồng Facebook</a> &nbsp;·&nbsp;
+  <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy (Zalo)</a>
 </p>
