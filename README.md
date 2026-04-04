@@ -4,73 +4,98 @@
 
 > **Bộ sưu tập Skills mở rộng cho OpenClaw** — được tuyển chọn và phát triển bởi [MCB AI](https://www.mcbai.vn)
 
-Tất cả skills trong repo này đều plug-and-play: tải về, copy vào `~/.agents/skills/`, dùng ngay — không cần code, không cần cấu hình phức tạp.
+Tất cả skills đều plug-and-play: tải về, copy vào `~/.agents/skills/`, dùng ngay.
+Một skill có thể thuộc nhiều category.
 
 ---
 
-## Danh sách Skills theo Category
+## Danh sách tất cả Skills
 
-### 🔧 Tiện Ích (`skills/tien-ich/`)
-*Các công cụ hỗ trợ công việc hàng ngày*
-
-| Skill | Mô tả | Platform |
+| Skill | Mô tả | Category |
 |-------|-------|----------|
-| [download-aio](skills/tien-ich/download-aio/) | Tải video/audio từ 1000+ nền tảng (YouTube, TikTok, Facebook...) | Windows |
-| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch file SRT phụ đề sang bất kỳ ngôn ngữ nào (AI cinematic translation) | All |
+| [download-aio](skills/tien-ich/download-aio/) | Tải video/audio từ 1000+ nền tảng | 🔧 Tiện ích · 📱 Mạng XH · ▶️ YouTube |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch file SRT sang bất kỳ ngôn ngữ nào (AI cinematic) | 🔧 Tiện ích · 📱 Mạng XH · ▶️ YouTube |
+| [content-research](skills/content/content-research/) | Tìm bài viết & tin tức trending (Brave + Tavily) | 📝 Content · 📱 Mạng XH |
+| [content-writer](skills/content/content-writer/) | Viết post đa nền tảng (6 format, 8 tone, EN/VI) | 📝 Content · 📱 Mạng XH |
+
+> 🔄 Cập nhật thêm thường xuyên. **Star repo** để không bỏ lỡ 🌟
 
 ---
 
-### 📝 Content (`skills/content/`)
-*Nghiên cứu, viết bài, tạo nội dung LinkedIn*
+## Skills theo Category
 
-| Skill | Mô tả | Platform |
-|-------|-------|----------|
-| [content-research](skills/content/content-research/) | Tìm bài viết & tin tức trending từ web (Brave + Tavily song song) | All |
-| [content-writer](skills/content/content-writer/) | Viết LinkedIn post từ nguồn bài (4 format, 6 tone, EN/VI) | All |
+### 🔧 Tiện Ích
+*Công cụ hỗ trợ công việc hàng ngày*
 
-### 📊 Phân Tích (`skills/phan-tich/`) *(sắp ra mắt)*
-*Phân tích dữ liệu, báo cáo, thống kê*
-
-### 🤖 Tự Động Hóa (`skills/tu-dong-hoa/`) *(sắp ra mắt)*
-*Automation, workflow, scheduling*
-
-### 📱 Mạng Xã Hội (`skills/mang-xa-hoi/`) *(sắp ra mắt)*
-*Quản lý Facebook, TikTok, Instagram, YouTube...*
+| Skill | Mô tả |
+|-------|-------|
+| [download-aio](skills/tien-ich/download-aio/) | Tải video/audio từ 1000+ nền tảng (YouTube, TikTok, Facebook...) |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch file SRT phụ đề, tự detect encoding, hỗ trợ mọi ngôn ngữ |
 
 ---
 
-> 🔄 Sẽ cập nhật thêm skills thường xuyên. **Star repo** để không bỏ lỡ 🌟
+### 📝 Content
+*Nghiên cứu, viết bài, tạo nội dung*
+
+| Skill | Mô tả |
+|-------|-------|
+| [content-research](skills/content/content-research/) | Tìm bài viết & tin tức trending từ web (Brave + Tavily song song) |
+| [content-writer](skills/content/content-writer/) | Viết post cho LinkedIn, Facebook, Twitter/X, TikTok, Threads |
 
 ---
 
-## Cách cài đặt skill
+### 📱 Mạng Xã Hội
+*Quản lý và tối ưu nội dung trên các nền tảng*
+
+| Skill | Mô tả |
+|-------|-------|
+| [download-aio](skills/tien-ich/download-aio/) | Tải video/reels/shorts từ mọi nền tảng về máy |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch phụ đề video trước khi đăng lên mạng xã hội |
+| [content-research](skills/content/content-research/) | Tìm nội dung trending để viết bài |
+| [content-writer](skills/content/content-writer/) | Viết post Facebook, LinkedIn, TikTok caption... |
+
+---
+
+### ▶️ YouTube
+*Công cụ dành riêng cho YouTube creators*
+
+| Skill | Mô tả |
+|-------|-------|
+| [download-aio](skills/tien-ich/download-aio/) | Tải video YouTube, playlist, channel, audio, subtitle |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch phụ đề tiếng Anh sang tiếng Việt (và ngược lại) |
+
+---
+
+### 📊 Phân Tích *(sắp ra mắt)*
+### 🤖 Tự Động Hóa *(sắp ra mắt)*
+
+---
+
+## Cách cài đặt
 
 ### Bước 1 — Clone repo
-
 ```powershell
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai.git
 ```
 
-### Bước 2 — Copy skill muốn dùng vào OpenClaw
-
+### Bước 2 — Copy skill vào OpenClaw
 ```powershell
-# Windows (PowerShell)
-# Cú pháp: skills\<category>\<tên-skill>
-Copy-Item -Recurse openclaw-skills-mcbai\skills\tien-ich\download-aio $env:USERPROFILE\.agents\skills\
+# Windows — ví dụ cài subtitle-translator
+Copy-Item -Recurse openclaw-skills-mcbai\skills\tien-ich\subtitle-translator $env:USERPROFILE\.agents\skills\
 
 # macOS / Linux
-cp -r openclaw-skills-mcbai/skills/tien-ich/download-aio ~/.agents/skills/
+cp -r openclaw-skills-mcbai/skills/tien-ich/subtitle-translator ~/.agents/skills/
 ```
 
-### Bước 3 — Chạy script cài đặt (nếu skill yêu cầu)
+> Skill nằm trong folder nào cũng được — chỉ cần copy đúng folder skill vào `~/.agents/skills/`
 
+### Bước 3 — Cài dependencies (nếu cần)
 ```powershell
 powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\.agents\skills\<tên-skill>\scripts\install.ps1
 ```
 
 ### Bước 4 — Dùng ngay!
-
-Mở chat với OpenClaw agent và gọi skill theo hướng dẫn trong README của từng skill.
+Mở chat với OpenClaw agent, gọi skill theo hướng dẫn trong README của từng skill.
 
 ---
 
@@ -80,32 +105,20 @@ Mở chat với OpenClaw agent và gọi skill theo hướng dẫn trong README 
 openclaw-skills-mcbai/
 ├── README.md
 └── skills/
-    ├── tien-ich/                    ← 🔧 Tiện ích hàng ngày
-    │   └── download-aio/            ← Tải video AIO
-    │       ├── README.md
-    │       ├── SKILL.md
-    │       ├── scripts/
-    │       └── references/
-    ├── content/                     ← 📝 Content & viết bài
-    ├── phan-tich/                   ← 📊 Phân tích dữ liệu
-    ├── tu-dong-hoa/                 ← 🤖 Tự động hóa
-    └── mang-xa-hoi/                 ← 📱 Mạng xã hội
+    ├── tien-ich/                    ← 🔧 Tiện ích
+    │   ├── download-aio/
+    │   └── subtitle-translator/
+    └── content/                     ← 📝 Content
+        ├── content-research/
+        └── content-writer/
 ```
 
-> **Lưu ý:** `SKILL.md` là file OpenClaw đọc để điều khiển agent — bạn không cần đọc. Chỉ cần đọc `README.md` của từng skill là đủ.
-
----
-
-## Yêu cầu
-
-- [OpenClaw](https://openclaw.mcbai.vn/) đã cài đặt và cấu hình
-- Mỗi skill có yêu cầu riêng — xem README của từng skill
+> **Lưu ý:** Skill được đặt trong folder theo category chính. Skill có thể thuộc nhiều category (xem bảng ở trên).
+> `SKILL.md` là file OpenClaw đọc để điều khiển agent — bạn chỉ cần đọc `README.md`.
 
 ---
 
 ## Về MCB AI
-
-MCB AI là nền tảng AI content & marketing automation của người Việt, dành cho người Việt.
 
 | | |
 |--|--|
