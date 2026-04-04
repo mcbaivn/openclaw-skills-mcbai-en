@@ -16,6 +16,7 @@ Tất cả skills trong repo này đều plug-and-play: tải về, copy vào `~
 | Skill | Mô tả | Platform |
 |-------|-------|----------|
 | [download-aio](skills/tien-ich/download-aio/) | Tải video/audio từ 1000+ nền tảng (YouTube, TikTok, Facebook...) | Windows |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch file SRT phụ đề sang bất kỳ ngôn ngữ nào (AI cinematic translation) | All |
 
 ---
 
