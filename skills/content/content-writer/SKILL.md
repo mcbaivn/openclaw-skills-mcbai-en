@@ -1,18 +1,18 @@
 ---
 name: content-writer
-description: Generate high-quality LinkedIn posts from research articles and source data. Supports 4 content formats (Toplist, POV, Case Study, How-to), multiple tones (default, bold, educational, storytelling, analytical, custom), 3 lengths (short/medium/long), and 2 languages (English/Vietnamese). Use this skill whenever the user wants to write LinkedIn content, create social media posts, draft professional content from research data, generate content in toplist/POV/case-study/how-to format, or asks to "write a post", "create content", "draft a LinkedIn post", "generate a post from this article", or any content writing from source material.
+description: Generate high-quality social media posts from research articles and source data. Supports multiple platforms (LinkedIn, Facebook, Twitter/X, TikTok caption, Threads), 6 content formats (Toplist, POV, Case Study, How-to, Story, Hook-List-CTA), multiple tones (default, bold, educational, storytelling, analytical, viral, empathetic, custom), 3 lengths (short/medium/long), and 2 languages (English/Vietnamese). Use this skill whenever the user wants to write a post, create social media content, draft content from research data, generate content in any format, or asks to "write a post", "viết bài", "tạo nội dung", "draft a post", "generate a post from this article", or any content writing from source material.
 ---
 
 # Content Writer Skill
 
-Generate professional LinkedIn posts from research articles. This skill replicates a complete content writing pipeline — taking source articles and producing polished, data-driven LinkedIn posts in multiple formats.
+Generate professional social media posts from research articles. Supports LinkedIn, Facebook, Twitter/X, TikTok caption, Threads — taking source material and producing polished, platform-optimized posts.
 
 ## When to Use
 
-- User has research articles and wants to create LinkedIn posts
-- User wants to write a post in a specific format (toplist, POV, case study, how-to)
-- User needs content generated from news/data sources
-- User asks to "write a post" or "create content" from source material
+- User has articles/data and wants to create social media posts
+- User wants to write a post in a specific format
+- User needs content for any platform: LinkedIn, Facebook, Twitter/X, TikTok, Threads
+- User asks to "write a post", "viết bài", "tạo content" from any source material
 - Works best after using the `content-research` skill to gather sources
 
 ## Core Workflow
@@ -21,106 +21,130 @@ Generate professional LinkedIn posts from research articles. This skill replicat
 
 Collect from the user (ask if not provided):
 
-1. **Source articles** (required) — at minimum: title, source, date, summary
-2. **Content format** (default: toplist) — one of 4 formats below
-3. **Tone** (default: default) — see Tone Presets
-4. **Length** (default: medium) — short/medium/long
-5. **Language** (default: en) — English or Vietnamese
-6. **Number of posts** (default: 1) — how many posts to generate (max = number of articles)
+1. **Source material** (required) — article, URL, summary, or raw data
+2. **Platform** (default: LinkedIn) — LinkedIn / Facebook / Twitter/X / TikTok / Threads
+3. **Content format** (default: toplist) — see 6 formats below
+4. **Tone** (default: default) — see Tone Presets
+5. **Length** (default: medium) — short/medium/long
+6. **Language** (default: Vietnamese) — English or Vietnamese
+7. **Number of posts** (default: 1)
 
 ### Step 2: Select Format
 
-Read the appropriate format reference file for detailed prompt instructions:
+Read the appropriate format reference file:
 
 | Format | File | Best For |
 |--------|------|----------|
-| 📋 Toplist | `references/format-toplist.md` | Numbered lists with data points |
+| 📋 Toplist | `references/format-toplist.md` | Numbered lists with data |
 | 💡 POV | `references/format-pov.md` | Bold opinions backed by data |
-| 🏢 Case Study | `references/format-case-study.md` | Deep-dive on one company |
-| 🛠️ How-to | `references/format-how-to.md` | Step-by-step actionable guides |
+| 🏢 Case Study | `references/format-case-study.md` | Deep-dive one story |
+| 🛠️ How-to | `references/format-how-to.md` | Step-by-step guides |
+| 📖 Story | `references/format-story.md` | Narrative, emotional journey |
+| 🎯 Hook-List-CTA | `references/format-hook-list-cta.md` | Facebook viral format |
 
-### Step 3: Build the Prompt
+### Step 3: Apply Platform Rules
 
-Combine these components (read `references/brand-context.md` for the full brand context):
+Read `references/platform-rules.md` for platform-specific constraints. Quick reference:
 
-1. **Brand context** — MCB AI (mcbai.vn) writing style and rules
-2. **Task description** — format-specific instructions
-3. **Source articles** — all selected articles as context, with one primary
-4. **Tone instructions** — from tone preset or custom
-5. **Language instructions** — English or Vietnamese
-6. **Length constraints** — word count targets
-7. **Multi-post note** — if generating multiple posts, each must have unique angle
+| Platform | Max length | Style | Hashtag |
+|----------|-----------|-------|---------|
+| LinkedIn | 3,000 chars | Professional, data-driven | 3-5 tags |
+| Facebook | 63,206 chars | Conversational, emotional, story | 0-3 tags |
+| Twitter/X | 280 chars | Punchy, hook-heavy | 1-2 tags |
+| TikTok | 2,200 chars (caption) | Casual, trendy, FOMO | 5-10 tags |
+| Threads | 500 chars | Conversational, casual | 0-2 tags |
 
-### Step 4: Generate Content
+### Step 4: Build the Prompt
 
-Write the post following the format structure exactly. The output must be:
-- **Plain text only** — LinkedIn does not render markdown
-- **ZERO asterisks** — no `*`, no `**`, no markdown bold/italic
-- **No em dashes** (—) — use hyphens (-) or commas instead
-- **No source URLs** in the post body
-- **No markdown formatting** of any kind (#, [], (), etc.)
-- **Short paragraphs** — 1-2 sentences max per paragraph
-- **Data-driven** — every claim backed by specific numbers
+Combine:
+1. **Brand context** — read `references/brand-context.md`
+2. **Format instructions** — from selected format file
+3. **Platform rules** — from `references/platform-rules.md`
+4. **Source material** — articles/data provided
+5. **Tone + Language + Length** instructions
 
-### Step 5: Present and Refine
+### Step 5: Generate Content
 
-Present the generated post(s) and offer:
-- Copy as plain text
-- Regenerate with different format/tone/length
-- Edit specific sections
-- Generate additional posts from remaining articles
+Output rules (non-negotiable):
+- **Plain text only** — no markdown rendering on social platforms
+- **ZERO asterisks** — no `*`, no `**`
+- **No em dashes** (—) — use `-` or comma
+- **No source URLs** in post body
+- **No markdown** (`#`, `[]`, `()`)
+- **Short paragraphs** — 1-2 sentences max
+- **Data-driven** — every claim backed by numbers
+- For emphasis: use CAPS on 1-2 key words
+- Lists: use numbers (`1. 2. 3.`) or arrows (`→`)
+- Emoji: use naturally per platform style (Facebook/TikTok: more; LinkedIn: 2-3 max)
+
+### Step 6: Present and Refine
+
+Offer after generating:
+- Regenerate with different format/tone/length/platform
+- Create variants for A/B testing
+- Generate versions for multiple platforms simultaneously
 
 ## Format Structures
 
-### Toplist Format
+### Toplist
 ```
-HOOK (1-2 lines): Bold claim + specific number
-CONTEXT (2-3 lines): Why this matters now
-NUMBERED LIST: Each item → key detail + metric
-TAKEAWAY (2-3 lines): Pattern that emerges
-CTA: Engagement question or soft MCB AI mention
-```
-
-### POV Format
-```
-HOOK (1-2 lines): Contrarian bold opening
-DATA (3-5 lines): Evidence with numbers, companies, dollars
-ANALYSIS (3-5 lines): What this means, connect dots
-PREDICTION (2-3 lines): Clear position, don't hedge
-CTA: Provocative question to drive comments
+HOOK: Bold claim + specific number
+CONTEXT: Why this matters now
+LIST: Numbered items with data points
+TAKEAWAY: Pattern that emerges
+CTA: Engagement question
 ```
 
-### Case Study Format
+### POV
 ```
-HOOK (1-2 lines): Most impressive metric/outcome
-CONTEXT (2-3 lines): Problem that existed
-WHAT THEY DID (3-5 lines): Specific strategy, names, numbers
-RESULTS (2-3 lines): Concrete outcomes
-LESSON (2-3 lines): Non-obvious takeaway
-CTA: Engagement question or soft MCB AI mention
-```
-
-### How-to Format
-```
-HOOK (1-2 lines): Promise clear outcome
-WHY (2-3 lines): Why it matters, what people get wrong
-STEPS (3-7 numbered): Action verb + why it works + tool/example
-PRO TIP (1-2 lines): Non-obvious shortcut
-RESULT (1-2 lines): What they'll achieve
-CTA: "Try step 1 today" or engagement question
+HOOK: Contrarian bold opening
+DATA: Evidence with numbers
+ANALYSIS: What this means
+PREDICTION: Clear position
+CTA: Provocative question
 ```
 
-## Length Guidelines
+### Case Study
+```
+HOOK: Most impressive metric
+CONTEXT: Problem that existed
+WHAT THEY DID: Strategy + numbers
+RESULTS: Concrete outcomes
+LESSON: Non-obvious takeaway
+CTA: Engagement or MCB AI mention
+```
 
-| Length | Word Count | Character Count | Description |
-|--------|-----------|----------------|-------------|
-| Short | 80-150 words | ~500-800 chars | Concise, punchy. Every word earns its place. |
-| Medium | 150-300 words | ~800-1800 chars | Standard LinkedIn post with substance. |
-| Long | 400-700 words | ~2500-4500 chars | Article-length deep dive. Mini-article. |
+### How-to
+```
+HOOK: Promise clear outcome
+WHY: What people get wrong
+STEPS: 3-7 numbered, action verbs
+PRO TIP: Non-obvious shortcut
+RESULT: What they'll achieve
+CTA: "Try step 1 today"
+```
+
+### Story (Facebook-optimized)
+```
+OPENING SCENE: Specific moment, pulls reader in
+TENSION: Problem/conflict builds
+TURNING POINT: Insight or decision
+RESOLUTION: Outcome + lesson
+CTA: Relatable question or tag prompt
+```
+
+### Hook-List-CTA (Facebook viral)
+```
+HOOK (1 line): Stop-the-scroll — question, shock, or bold claim
+BLANK LINE
+LIST: 5-10 short punchy items (emoji optional)
+BLANK LINE
+CTA: "Tag ai cũng cần biết điều này" hoặc câu hỏi
+```
 
 ## Tone Presets
 
-Read `references/tone-presets.md` for full details. Quick reference:
+Read `references/tone-presets.md` for full details:
 
 | Tone | Style |
 |------|-------|
@@ -129,28 +153,38 @@ Read `references/tone-presets.md` for full details. Quick reference:
 | Educational | Teacher mode, analogies, "here's why" |
 | Storytelling | Narrative arc, scenes, emotional |
 | Analytical | Research analyst, patterns, comparisons |
-| Custom | User provides their own tone description |
+| Viral | FOMO-driven, emotional trigger, share-bait |
+| Empathetic | Warm, understanding, community-focused |
+| Custom | User provides own tone description |
+
+## Length Guidelines
+
+| Length | Words | Chars | Best for |
+|--------|-------|-------|---------|
+| Short | 50-100 | ~300-600 | Twitter/X, Threads, TikTok caption |
+| Medium | 150-300 | ~800-1800 | LinkedIn, Facebook standard |
+| Long | 400-700 | ~2500-4500 | LinkedIn deep dive, Facebook story |
 
 ## Reference Files
 
-- `references/brand-context.md` — Full brand identity, writing rules, design system
-- `references/format-toplist.md` — Toplist format detailed instructions
-- `references/format-pov.md` — POV format detailed instructions
-- `references/format-case-study.md` — Case Study format detailed instructions
-- `references/format-how-to.md` — How-to format detailed instructions
-- `references/tone-presets.md` — All tone preset details and custom tone handling
-- `references/formatting-rules.md` — Critical formatting constraints (MUST read)
+- `references/brand-context.md` — MCB AI brand identity + writing rules
+- `references/format-toplist.md` — Toplist format instructions
+- `references/format-pov.md` — POV format instructions
+- `references/format-case-study.md` — Case Study instructions
+- `references/format-how-to.md` — How-to format instructions
+- `references/format-story.md` — Story format instructions (Facebook-optimized)
+- `references/format-hook-list-cta.md` — Hook-List-CTA viral format
+- `references/tone-presets.md` — All tone details + Viral + Empathetic presets
+- `references/platform-rules.md` — Platform-specific constraints
+- `references/formatting-rules.md` — Critical formatting rules (MUST read)
 
 ## Critical Rules (Non-Negotiable)
 
-These formatting rules are absolute and will cause output to be rejected if violated:
-
-1. ABSOLUTELY NO asterisks (*) anywhere — not for bold, not for lists
-2. ABSOLUTELY NO markdown formatting — no **, no *, no #, no [], no ()
-3. ABSOLUTELY NO em dashes (—) — use hyphens or commas
-4. ABSOLUTELY NO source citations or URLs in post text
+1. ABSOLUTELY NO asterisks (*) anywhere
+2. ABSOLUTELY NO markdown formatting
+3. ABSOLUTELY NO em dashes (—)
+4. ABSOLUTELY NO source URLs in post
 5. Output MUST be plain text only
-6. For emphasis, use CAPS for 1-2 key words: "This is the REAL opportunity."
-7. For list items, use numbers (1. 2. 3.) or → arrows. Never asterisk bullets.
-8. Emoji sparingly — max 2-3 per post, only for visual section breaks
-
+6. Emphasis = CAPS on 1-2 words max
+7. Lists = numbers or → arrows only
+8. Emoji = natural, platform-appropriate (not excessive on LinkedIn)

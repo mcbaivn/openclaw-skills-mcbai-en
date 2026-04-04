@@ -47,6 +47,26 @@
 - Spot patterns others miss
 - Quantify everything possible
 
+### Viral / FOMO
+**Style**: Kích cảm xúc mạnh, tạo urgency, FOMO-driven. Người đọc thấy "phải share ngay."
+**When to use**: Facebook content, awareness posts, trend posts, khi muốn reach rộng.
+**Voice**: "Mọi người đang làm điều này. Bạn thì sao?"
+**Tips**:
+- Dùng "Hầu hết mọi người không biết...", "Bí mật mà ít ai nói..."
+- Tạo contrast: "Trong khi bạn đang X, người khác đang Y"
+- Numbers cụ thể tạo credibility
+- Kết thúc bằng CTA share/tag mạnh
+
+### Empathetic
+**Style**: Ấm áp, hiểu người đọc, tạo cảm giác "họ hiểu mình." Share cao vì tính relatable.
+**When to use**: Facebook community posts, khi chủ đề liên quan đến struggle hoặc growth cá nhân.
+**Voice**: "Bạn không đơn độc. Rất nhiều người cảm thấy như vậy."
+**Tips**:
+- Bắt đầu bằng sự công nhận: "Nếu bạn đang cảm thấy X..."
+- Tránh phán xét, không có "đúng" hay "sai"
+- Dùng "chúng ta" thay vì "bạn" để tạo community
+- CTA: câu hỏi mở, mời chia sẻ cảm xúc
+
 ### Custom
 **Style**: User-defined tone.
 **When to use**: When the user provides their own tone description.

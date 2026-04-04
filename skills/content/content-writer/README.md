@@ -1,30 +1,109 @@
-# content-writer — Viết LinkedIn post chuyên nghiệp từ nguồn bài
+# content-writer — Viết post cho mọi nền tảng mạng xã hội
 
-> Skill OpenClaw tạo LinkedIn post chất lượng cao từ bài nghiên cứu. Hỗ trợ **4 format, 6 tone, 2 ngôn ngữ**. Output plain text chuẩn LinkedIn — không markdown, không asterisk. Thường dùng sau `content-research`.
+> Skill OpenClaw tạo post chất lượng cao cho **LinkedIn, Facebook, Twitter/X, TikTok, Threads** từ bất kỳ nguồn bài nào. Hỗ trợ **6 format, 8 tone, 2 ngôn ngữ**. Output plain text sẵn sàng đăng — không cần chỉnh sửa thêm.
 
 ---
 
 ## Skill này dùng để làm gì?
 
-Bạn có bài viết hay, data thú vị — nhưng không biết viết thành LinkedIn post thế nào cho cuốn? Skill này giúp bạn:
-- Biến bất kỳ bài nghiên cứu nào thành LinkedIn post chuyên nghiệp
-- Chọn format phù hợp: Toplist, POV, Case Study, How-to
-- Điều chỉnh tone: mạnh bạo, giáo dục, kể chuyện, phân tích...
-- Viết bằng tiếng Anh hoặc tiếng Việt
-- Output chuẩn ngay — không cần chỉnh sửa thêm
+Bạn có ý tưởng, bài nghiên cứu, hoặc data hay — nhưng viết post tốn quá nhiều thời gian? Skill này giúp bạn:
+- Biến bất kỳ nguồn bài nào thành post đăng ngay
+- Chọn đúng format cho từng nền tảng (Facebook cần Story/Hook-List, LinkedIn cần Toplist/POV)
+- Điều chỉnh tone phù hợp mục tiêu (viral, giáo dục, kể chuyện, phân tích...)
+- Viết tiếng Anh hoặc tiếng Việt tự nhiên
+- Output chuẩn ngay — không markdown, không format lạ
 
 ---
 
-## Tính năng
+## Nền tảng hỗ trợ
 
-| Tính năng | Chi tiết |
-|-----------|---------|
-| 📋 4 Format | Toplist / POV / Case Study / How-to |
-| 🎭 6 Tone | Default / Bold / Educational / Storytelling / Analytical / Custom |
-| 📏 3 Độ dài | Short (80-150 từ) / Medium (150-300 từ) / Long (400-700 từ) |
-| 🌐 2 Ngôn ngữ | Tiếng Anh / Tiếng Việt |
-| ✅ Plain text | Output chuẩn LinkedIn — không markdown, không asterisk |
-| 🔗 Tích hợp | Nhận nguồn bài trực tiếp từ `content-research` |
+| Nền tảng | Style | Format phù hợp |
+|----------|-------|----------------|
+| LinkedIn | Professional, data-driven | Toplist, POV, Case Study, How-to |
+| Facebook | Conversational, emotional | Story, Hook-List-CTA, POV |
+| Twitter/X | Punchy, opinionated | POV ngắn, Hook-List ngắn |
+| TikTok | Casual, FOMO | Hook-List-CTA, How-to ngắn |
+| Threads | Casual, unfiltered | POV, Story ngắn |
+
+---
+
+## 6 Format có sẵn
+
+### 📋 Toplist
+Danh sách có số thứ tự với data points.
+```
+HOOK: Bold claim + số cụ thể
+CONTEXT: Tại sao quan trọng
+LIST: Numbered items + metric
+TAKEAWAY: Pattern rút ra
+CTA: Câu hỏi engagement
+```
+
+### 💡 POV
+Quan điểm táo bạo, có data hỗ trợ. Tạo tranh luận.
+```
+HOOK: Contrarian opening
+DATA: Bằng chứng số liệu
+ANALYSIS: Ý nghĩa
+PREDICTION: Dự đoán rõ ràng
+CTA: Câu hỏi kích comment
+```
+
+### 🏢 Case Study
+Deep-dive một câu chuyện cụ thể.
+```
+HOOK: Metric ấn tượng nhất
+CONTEXT: Vấn đề ban đầu
+WHAT THEY DID: Chiến lược + số
+RESULTS: Kết quả cụ thể
+LESSON: Bài học không ai nói
+CTA: Engagement question
+```
+
+### 🛠️ How-to
+Hướng dẫn từng bước có thể làm ngay.
+```
+HOOK: Hứa hẹn kết quả rõ ràng
+WHY: Người ta hay làm sai gì
+STEPS: 3-7 bước action verbs
+PRO TIP: Shortcut ít ai biết
+RESULT: Đạt được gì
+CTA: "Thử bước 1 ngay hôm nay"
+```
+
+### 📖 Story *(Facebook-optimized)*
+Narrative cảm xúc, share rate cao.
+```
+OPENING SCENE: Khoảnh khắc cụ thể
+TENSION: Xung đột leo thang
+TURNING POINT: Aha moment
+RESOLUTION: Kết quả + số liệu
+LESSON: Non-obvious takeaway
+CTA: Câu hỏi relatable / tag prompt
+```
+
+### 🎯 Hook-List-CTA *(Facebook viral)*
+Format đơn giản, viral nhất Facebook.
+```
+HOOK (1 line): Stop-the-scroll
+LIST: 5-10 items ngắn, cụ thể
+CTA: Tag / Share / Comment prompt
+```
+
+---
+
+## 8 Tone có sẵn
+
+| Tone | Phong cách | Tốt cho |
+|------|-----------|---------|
+| Default | Data-driven, tự tin | Mọi nền tảng |
+| Bold | Táo bạo, contrarian | LinkedIn, Twitter/X |
+| Educational | Dạy học, dùng ví dụ | LinkedIn, Facebook |
+| Storytelling | Kể chuyện, cảm xúc | Facebook, LinkedIn |
+| Analytical | Phân tích, so sánh | LinkedIn, Twitter/X |
+| Viral | FOMO, urgency, share-bait | Facebook, TikTok |
+| Empathetic | Ấm áp, relatable, community | Facebook, Threads |
+| Custom | Bạn tự mô tả | Mọi nền tảng |
 
 ---
 
@@ -42,94 +121,38 @@ cp -r content-writer ~/.agents/skills/
 
 ## Cách dùng
 
-### Đơn giản nhất — paste bài và yêu cầu
+### Đơn giản nhất
 ```
-Viết LinkedIn post từ bài này: [paste nội dung bài]
+Viết post Facebook từ bài này: [paste nội dung]
 ```
 
-### Chỉ định format
+### Chỉ định đầy đủ
 ```
-Viết post format Toplist từ bài này: [URL hoặc nội dung]
+Viết Story post Facebook, tone Viral, tiếng Việt, medium length từ bài này: [URL hoặc nội dung]
+```
 
-Viết POV post bằng tiếng Việt, tone Bold, medium length
+### Nhiều nền tảng cùng lúc
+```
+Viết cùng 1 nội dung thành 3 version: LinkedIn (Toplist), Facebook (Story), Twitter (POV ngắn)
 ```
 
 ### Sau khi research xong
 ```
-Dùng bài 1 và 3 để viết Case Study post, tiếng Việt, dài
+Dùng bài 1 và 3 để viết Hook-List-CTA cho Facebook, tiếng Việt
 ```
 
 ---
 
-## 4 Format có sẵn
+## Quy tắc output
 
-### 📋 Toplist
-Danh sách có số thứ tự với data points. Phù hợp khi có nhiều điểm muốn trình bày.
-```
-HOOK: Bold claim + số cụ thể
-CONTEXT: Tại sao quan trọng
-LIST: Mỗi item → chi tiết + metric
-TAKEAWAY: Pattern rút ra
-CTA: Câu hỏi engagement
-```
-
-### 💡 POV
-Quan điểm táo bạo có data hỗ trợ. Phù hợp khi muốn tạo tranh luận.
-```
-HOOK: Contrarian opening
-DATA: Bằng chứng với số liệu
-ANALYSIS: Ý nghĩa
-PREDICTION: Dự đoán rõ ràng
-CTA: Câu hỏi kích comment
-```
-
-### 🏢 Case Study
-Deep-dive một công ty/dự án cụ thể. Phù hợp khi có câu chuyện thực tế.
-```
-HOOK: Metric/outcome ấn tượng nhất
-CONTEXT: Vấn đề ban đầu
-WHAT THEY DID: Chiến lược + số liệu
-RESULTS: Kết quả cụ thể
-LESSON: Bài học không ai nói
-CTA: Câu hỏi hoặc MCB AI mention
-```
-
-### 🛠️ How-to
-Hướng dẫn từng bước có thể làm ngay. Phù hợp khi muốn giáo dục.
-```
-HOOK: Hứa hẹn kết quả rõ ràng
-WHY: Tại sao quan trọng
-STEPS: 3-7 bước có thể hành động
-PRO TIP: Shortcut không ai biết
-RESULT: Họ sẽ đạt được gì
-CTA: "Thử bước 1 ngay hôm nay"
-```
-
----
-
-## 6 Tone có sẵn
-
-| Tone | Phong cách |
-|------|-----------|
-| Default | Data-driven, tự tin, dễ tiếp cận |
-| Bold | Táo bạo, contrarian, lập trường mạnh |
-| Educational | Dạy học, dùng ví dụ, giải thích rõ |
-| Storytelling | Kể chuyện, có cảm xúc, narrative arc |
-| Analytical | Phân tích, so sánh, pattern recognition |
-| Custom | Bạn tự mô tả tone muốn dùng |
-
----
-
-## Quy tắc output (Critical)
-
-Output luôn là plain text chuẩn LinkedIn:
+Post luôn là plain text thuần:
 - Không asterisk (`*`) — không bao giờ
 - Không markdown (`**`, `#`, `[]`)
 - Không em dash (`—`) — dùng `-` hoặc dấu phẩy
 - Không URL trong bài
 - Nhấn mạnh bằng CAPS: `"Đây là CƠ HỘI thực sự"`
-- List dùng số (`1. 2. 3.`) hoặc mũi tên (`→`)
-- Emoji tối đa 2-3 cái, chỉ để ngắt đoạn
+- List: dùng số hoặc `→` arrows
+- Emoji: tự nhiên theo nền tảng (Facebook thoải mái hơn LinkedIn)
 
 ---
 
@@ -137,16 +160,19 @@ Output luôn là plain text chuẩn LinkedIn:
 
 ```
 content-writer/
-├── README.md                    ← Bạn đang đọc
-├── SKILL.md                     ← Điều khiển agent
+├── README.md                      ← Bạn đang đọc
+├── SKILL.md                       ← Điều khiển agent
 └── references/
-    ├── brand-context.md         ← Brand identity MCB AI
-    ├── format-toplist.md        ← Hướng dẫn format Toplist
-    ├── format-pov.md            ← Hướng dẫn format POV
-    ├── format-case-study.md     ← Hướng dẫn format Case Study
-    ├── format-how-to.md         ← Hướng dẫn format How-to
-    ├── tone-presets.md          ← Chi tiết các tone preset
-    └── formatting-rules.md     ← Quy tắc formatting bắt buộc
+    ├── brand-context.md           ← Brand identity MCB AI
+    ├── platform-rules.md          ← Rules cho từng nền tảng
+    ├── format-toplist.md          ← Format Toplist
+    ├── format-pov.md              ← Format POV
+    ├── format-case-study.md       ← Format Case Study
+    ├── format-how-to.md           ← Format How-to
+    ├── format-story.md            ← Format Story (Facebook)
+    ├── format-hook-list-cta.md    ← Format Hook-List-CTA viral
+    ├── tone-presets.md            ← 8 tone preset chi tiết
+    └── formatting-rules.md        ← Rules bắt buộc
 ```
 
 ---
