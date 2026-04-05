@@ -11,10 +11,25 @@ A skill can belong to multiple categories.
 
 ---
 
-## ⚡ Download All Skills at Once
+## ⚡ Install Skills
+
+### Install individual skills via ClawhHub (easiest)
+
+```bash
+npx clawhub@latest install youtube-content-analyzer
+npx clawhub@latest install youtube-channel-compare
+npx clawhub@latest install youtube-scheduler
+npx clawhub@latest install youtube-subtitle-extractor
+npx clawhub@latest install download-aio
+npx clawhub@latest install mcbai-subtitle-translator
+```
+
+> Skills are automatically downloaded to `~/.agents/skills/` — no git required.
+
+### Install all at once (clone repo)
 
 ```powershell
-# Windows - clone and install all skills in one command
+# Windows
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git && `
 Copy-Item -Recurse openclaw-skills-mcbai-en\skills\*\* $env:USERPROFILE\.agents\skills\
 ```
@@ -24,8 +39,6 @@ Copy-Item -Recurse openclaw-skills-mcbai-en\skills\*\* $env:USERPROFILE\.agents\
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git && \
 cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 ```
-
-> This command copies all skills from every category into `~/.agents/skills/` at once.
 
 ---
 
