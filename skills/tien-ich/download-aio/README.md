@@ -1,164 +1,81 @@
-# download-aio — Download Videos from 1000+ Platforms
+# 📥 Download AIO
 
-> OpenClaw skill that automatically downloads video, audio, playlists, subtitles from YouTube, TikTok, Facebook, Instagram and 1000+ other platforms. After downloading, **automatically sends file to Telegram**.
-
----
-
-## What is this skill for?
-
-Want to save a great TikTok video? Download music from YouTube? Save an entire playlist? Before, you had to:
-1. Use web converters → full of ads → low quality
-2. Install apps → computer bloat
-3. Copy complex yt-dlp commands → easy to get wrong
-
-With this skill, just **paste the URL into chat** — the agent handles everything and sends the file straight to your Telegram.
+> Tải video, audio, playlist, subtitle, thumbnail từ 1000+ nền tảng. Tự động gửi file về Telegram nếu ≤ 50MB.
 
 ---
 
-## Features
+## Cài đặt
 
-| Feature | Details |
-|---------|---------|
-| 🎬 Download video | Best quality or choose 1080p / 720p / 480p / 360p |
-| 🎵 Download audio | MP3 or M4A (no ffmpeg needed) |
-| 📋 Download playlist | Full or limited quantity |
-| 📝 Download subtitles | Auto-generated + official, multiple languages |
-| 🖼️ Download thumbnail | High quality cover image |
-| 📤 Auto send Telegram | Automatically sends files <= 50MB to chat |
-| 🔧 Auto install | Script auto-installs Python, yt-dlp, ffmpeg |
+```bash
+npx clawhub@latest install download-aio
+```
+
+> Sau khi cài, chạy lần đầu để setup dependencies:
+> ```powershell
+> powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\.agents\skills\download-aio\scripts\install.ps1
+> ```
+> Script tự động cài: yt-dlp, ffmpeg, tạo thư mục Downloads.
 
 ---
 
-## Supported Platforms
+## Tính năng
 
-**Most popular:**
-
-| Platform | Notes |
-|----------|-------|
-| YouTube | Video, Shorts, Live, Playlist, Channel |
-| TikTok | Most without watermark |
-| Facebook | Public video, Reel, Watch |
-| Instagram | Public post, Reel (private requires login) |
-| Twitter / X | Video tweets |
-| Twitch | VOD, Clips |
-| Vimeo | Full support |
-| SoundCloud | Audio tracks |
-| Reddit | Video posts |
-| Bilibili | Chinese videos |
-
-> Total support for **1000+ platforms**. See full list at [supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md).
+| Tính năng | Chi tiết |
+|-----------|---------|
+| 🎬 Tải video | Best quality hoặc chọn 1080p / 720p / 480p / 360p |
+| 🎵 Tải audio | MP3 hoặc M4A |
+| 📋 Tải playlist | Toàn bộ hoặc giới hạn số lượng |
+| 📝 Tải subtitle | Phụ đề tự động + chính thức, nhiều ngôn ngữ |
+| 🖼️ Tải thumbnail | Ảnh bìa chất lượng cao |
+| 📤 Auto gửi Telegram | Tự động gửi file ≤ 50MB về chat |
 
 ---
 
-## Installation
+## Nền tảng hỗ trợ
 
-### Requirements
-- Windows 10/11 (PowerShell)
-- Python 3.10+ (script will prompt if not installed)
-- OpenClaw installed
+YouTube, TikTok, Facebook, Instagram, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, Bilibili và **1000+ nền tảng** khác.
 
-### Step 1 — Copy skill to OpenClaw
-
-```powershell
-Copy-Item -Recurse download-aio $env:USERPROFILE\.agents\skills\
-```
-
-### Step 2 — Run auto-install script
-
-```powershell
-powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\.agents\skills\download-aio\scripts\install.ps1
-```
-
-The script will automatically:
-- ✅ Check Python (prompts to install if missing)
-- ✅ Install / update yt-dlp to latest version
-- ✅ Install ffmpeg via Chocolatey (if available)
-- ✅ Create `Downloads\yt-dlp\` directory
+> Xem danh sách đầy đủ tại [yt-dlp supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md).
 
 ---
 
-## Usage
+## Cách dùng
 
-### Simplest way
-
-Just paste a URL into chat with the OpenClaw agent:
+Chỉ cần paste URL vào chat với OpenClaw agent:
 
 ```
-https://www.youtube.com/watch?v=dQw4w9WgXcQ
+https://www.youtube.com/watch?v=...
+https://www.tiktok.com/@user/video/...
+https://www.facebook.com/reel/...
 ```
 
-Agent understands, downloads, sends file to your Telegram. Done.
+Agent tự hiểu, tải về, gửi file Telegram. Xong.
 
-### Advanced options
-
-You can request more specifically in natural language:
+### Tùy chỉnh nâng cao
 
 ```
-Download audio mp3 from https://youtu.be/...
-
-Download this playlist, first 10 videos only: https://youtube.com/playlist?list=...
-
-Download video 720p from https://www.tiktok.com/@...
-
-Download Vietnamese subtitles from https://youtu.be/...
-
-Download thumbnail from https://www.facebook.com/reel/...
-```
-
-### Telegram send logic
-
-| File size | Action |
-|-----------|--------|
-| <= 50MB | Automatically sends file to Telegram |
-| > 50MB | Reports file location on machine, does not send |
-
----
-
-## File Structure
-
-```
-download-aio/
-├── README.md              ← You are reading this file
-├── SKILL.md               ← Agent instructions (no need to read)
-├── scripts/
-│   ├── install.ps1        ← Auto-install all dependencies
-│   ├── check.ps1          ← Quick check if everything is ready
-│   └── find-python.ps1    ← Auto detect Python path on machine
-└── references/
-    ├── commands.md        ← Detailed yt-dlp commands for every use case
-    ├── platforms.md       ← Platform list + specific notes
-    └── troubleshooting.md ← Common error handling
+Tải audio mp3 từ https://youtu.be/...
+Tải playlist này, chỉ lấy 10 video đầu: https://...
+Tải video 720p từ https://...
+Tải phụ đề tiếng Việt từ https://youtu.be/...
 ```
 
 ---
 
-## Troubleshooting
+## Xử lý sự cố
 
-| Error | Fix |
-|-------|-----|
-| Python not found | Re-run `install.ps1`, install Python from [python.org](https://python.org) |
-| HTTP 429 / Rate limit | Agent auto-adds delay, or use `--cookies-from-browser chrome` |
-| Video requires login | Open Chrome, log in, agent uses `--cookies-from-browser chrome` |
-| ffmpeg not found | Run `choco install ffmpeg` or download from [ffmpeg.org](https://ffmpeg.org) |
-| File > 50MB | File saved at `Downloads\yt-dlp\`, agent reports the path |
-
----
-
-## Update yt-dlp
-
-Platforms change frequently, so update yt-dlp regularly:
-
-```powershell
-python -m pip install -U yt-dlp
-```
+| Lỗi | Cách fix |
+|-----|---------|
+| Python không tìm thấy | Cài Python tại [python.org](https://python.org) rồi chạy lại `install.ps1` |
+| HTTP 429 / Rate limit | Agent tự thêm delay, hoặc dùng `--cookies-from-browser chrome` |
+| Video cần đăng nhập | Mở Chrome, đăng nhập, agent dùng `--cookies-from-browser chrome` |
+| ffmpeg not found | Chạy `choco install ffmpeg` hoặc tải tại [ffmpeg.org](https://ffmpeg.org) |
+| File > 50MB | File lưu tại `Downloads\yt-dlp\`, agent thông báo đường dẫn |
 
 ---
 
 <p align="center">
-  <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp;
-  <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp;
-  <a href="https://openclaw.mcbai.vn">OpenClaw Cheatsheet</a> &nbsp;·&nbsp;
-  <a href="https://openclaw.mcbai.vn/openclaw101">OpenClaw 101 Course</a> &nbsp;·&nbsp;
-  <a href="https://www.facebook.com/groups/openclawxvn">Facebook Community</a> &nbsp;·&nbsp;
-  <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy (Zalo)</a>
+  <a href="https://www.mcbai.vn">MCB AI</a> ·
+  <a href="https://www.youtube.com/@mcbaivn">YouTube</a> ·
+  <a href="https://openclaw.mcbai.vn/openclaw101">Khóa học OpenClaw 101</a>
 </p>
