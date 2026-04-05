@@ -5,6 +5,12 @@ description: Generate high-quality social media posts from research articles and
 
 # Content Writer Skill
 
+## Installation
+
+```bash
+npx clawhub@latest install content-writer-mcbai
+```
+
 Generate professional social media posts from research articles. Supports LinkedIn, Facebook, Twitter/X, TikTok caption, Threads — taking source material and producing polished, platform-optimized posts.
 
 ## When to Use
@@ -188,3 +194,5 @@ Read `references/tone-presets.md` for full details:
 6. Emphasis = CAPS on 1-2 words max
 7. Lists = numbers or → arrows only
 8. Emoji = natural, platform-appropriate (not excessive on LinkedIn)
+
+

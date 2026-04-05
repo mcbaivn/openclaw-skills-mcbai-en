@@ -5,6 +5,12 @@ description: Research and discover trending content sources for any topic using 
 
 # Content Research Skill
 
+## Installation
+
+```bash
+npx clawhub@latest install content-research-mcbai
+```
+
 Search the web for trending articles, news, and content sources on any topic. This skill powers the MCB AI content research pipeline — finding, filtering, scoring, and organizing source material for content creation.
 
 ## Search Strategy: Brave + Tavily Dual-Engine
@@ -231,3 +237,5 @@ After research, the user typically selects articles and moves to writing. Pass t
 ```
 
 See `references/source-filters.md` for detailed source filter configurations.
+
+
