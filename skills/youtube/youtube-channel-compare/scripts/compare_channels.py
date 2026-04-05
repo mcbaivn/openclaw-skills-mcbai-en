@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 YouTube Channel Compare
-So sánh metrics của nhiều kênh YouTube
+Compare metrics across multiple YouTube channels
 Usage: python compare_channels.py <url1> <url2> [...] [--limit N]
 """
 
@@ -17,7 +17,7 @@ from collections import defaultdict
 OUTPUT_DIR = "Youtube_Compare"
 
 def fetch_channel_data(url, limit=20):
-    """Lấy metadata video từ kênh"""
+    """Fetch video metadata from a channel"""
     cmd = [
         "yt-dlp",
         "--flat-playlist",
@@ -61,7 +61,7 @@ def analyze_channel(videos):
     max_v, max_l, max_c = max(views) or 1, max(likes) or 1, max(comments) or 1
     scores = [trending_score(v, max_v, max_l, max_c) for v in videos]
     
-    # Tần suất đăng (ngày/video)
+    # Posting frequency (days/video)
     dates = sorted([v.get("upload_date","") for v in videos if v.get("upload_date")])
     freq = "N/A"
     if len(dates) >= 2:
@@ -69,7 +69,7 @@ def analyze_channel(videos):
             d1 = datetime.strptime(dates[0], "%Y%m%d")
             d2 = datetime.strptime(dates[-1], "%Y%m%d")
             days_span = abs((d2 - d1).days) or 1
-            freq = f"{days_span / len(dates):.1f} ngày/video"
+            freq = f"{days_span / len(dates):.1f} days/video"
         except:
             pass
     
@@ -99,59 +99,59 @@ def format_num(n):
 
 def generate_report(channels_data):
     lines = [f"# 📊 YouTube Channel Compare Report"]
-    lines.append(f"📅 {datetime.now().strftime('%d/%m/%Y %H:%M')}\n")
+    lines.append(f"🕐 {datetime.now().strftime('%d/%m/%Y %H:%M')}\n")
     lines.append(f"{'Metric':<25} " + " | ".join(f"{d['channel'][:20]:<20}" for d in channels_data))
     lines.append("-" * (25 + 23 * len(channels_data)))
     
     metrics = [
-        ("Views TB", "avg_views", format_num),
-        ("Likes TB", "avg_likes", format_num),
-        ("Comments TB", "avg_comments", format_num),
-        ("Trending Score TB", "avg_trending_score", str),
+        ("Avg Views", "avg_views", format_num),
+        ("Avg Likes", "avg_likes", format_num),
+        ("Avg Comments", "avg_comments", format_num),
+        ("Avg Trending Score", "avg_trending_score", str),
         ("Engagement Rate", "engagement_rate", lambda x: f"{x}%"),
-        ("Tần suất đăng", "post_frequency", str),
-        ("Video phân tích", "video_count", str),
+        ("Posting Frequency", "post_frequency", str),
+        ("Videos Analyzed", "video_count", str),
     ]
     
     for label, key, fmt in metrics:
         row = f"{label:<25} " + " | ".join(f"{fmt(d.get(key,'N/A')):<20}" for d in channels_data)
         lines.append(row)
     
-    lines.append("\n## 🏆 Video nổi bật nhất")
+    lines.append("\n## 🏆 Most Notable Videos")
     for d in channels_data:
         lines.append(f"- **{d['channel']}**: {d.get('top_video','N/A')}")
     
-    lines.append("\n## 🔍 Nhận xét")
+    lines.append("\n## 📝 Observations")
     best_views = max(channels_data, key=lambda x: x.get("avg_views", 0))
     best_engage = max(channels_data, key=lambda x: x.get("engagement_rate", 0))
-    lines.append(f"- 👑 Views cao nhất: **{best_views['channel']}** ({format_num(best_views['avg_views'])} TB)")
-    lines.append(f"- 💬 Engagement tốt nhất: **{best_engage['channel']}** ({best_engage['engagement_rate']}%)")
+    lines.append(f"- 👀 Highest views: **{best_views['channel']}** ({format_num(best_views['avg_views'])} avg)")
+    lines.append(f"- 💬 Best engagement: **{best_engage['channel']}** ({best_engage['engagement_rate']}%)")
     
     return "\n".join(lines)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="YouTube Channel Compare")
-    parser.add_argument("urls", nargs="+", help="URLs kênh YouTube (2-5 kênh)")
-    parser.add_argument("--limit", type=int, default=20, help="Số video mỗi kênh (mặc định: 20)")
+    parser.add_argument("urls", nargs="+", help="YouTube channel URLs (2-5 channels)")
+    parser.add_argument("--limit", type=int, default=20, help="Videos per channel (default: 20)")
     args = parser.parse_args()
 
     if len(args.urls) < 2:
-        print("[!] Cần ít nhất 2 kênh để so sánh")
+        print("[!] Need at least 2 channels to compare")
         sys.exit(1)
 
     all_data = []
     for url in args.urls:
-        print(f"[*] Đang lấy dữ liệu: {url}")
+        print(f"[*] Fetching data: {url}")
         videos = fetch_channel_data(url, args.limit)
         if not videos:
-            print(f"[!] Không lấy được dữ liệu từ: {url}")
+            print(f"[!] Could not fetch data from: {url}")
             continue
         data = analyze_channel(videos)
         all_data.append(data)
-        print(f"[+] {data['channel']}: {data['video_count']} video")
+        print(f"[+] {data['channel']}: {data['video_count']} videos")
 
     if len(all_data) < 2:
-        print("[!] Không đủ dữ liệu để so sánh")
+        print("[!] Not enough data to compare")
         sys.exit(1)
 
     report = generate_report(all_data)
@@ -165,4 +165,4 @@ if __name__ == "__main__":
         f.write(report)
     
     print(f"\n{report}")
-    print(f"\n[✓] Báo cáo lưu tại: {out_path}")
+    print(f"\n[✓] Report saved to: {out_path}")

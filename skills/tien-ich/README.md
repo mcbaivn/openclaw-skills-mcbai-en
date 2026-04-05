@@ -1,12 +1,11 @@
-# 🔧 Tiện Ích
+# 🔧 Utilities
 
-Các skills hỗ trợ công việc hàng ngày — tải file, xử lý dữ liệu, tiết kiệm thời gian.
+Skills for daily support tasks — downloading files, processing data, saving time.
 
-| Skill | Mô tả |
-|-------|-------|
-| [download-aio](download-aio/) | Tải video/audio từ 1000+ nền tảng |
-
-| [subtitle-translator](subtitle-translator/) | Dịch file SRT phụ đề sang bất kỳ ngôn ngữ nào |
+| Skill | Description |
+|-------|-------------|
+| [download-aio](download-aio/) | Download video/audio from 1000+ platforms |
+| [subtitle-translator](subtitle-translator/) | Translate SRT subtitle files to any language |
 
 ---
-[← Về trang chủ](../../README.md)
+[← Back to home](../../README.md)

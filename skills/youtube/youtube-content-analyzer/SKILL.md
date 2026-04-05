@@ -1,25 +1,25 @@
 ---
 name: youtube-content-analyzer
-description: Phân tích nội dung video YouTube từ file SRT/VTT/TXT hoặc URL trực tiếp. Tóm tắt nội dung, extract key points, phân tích chủ đề chính, tạo báo cáo. Dùng khi user yêu cầu "Tóm tắt video X", "Analyze content từ SRT", "Key points từ [URL]", "Đọc nội dung video mà không cần xem", hoặc cần hiểu nhanh nội dung hàng loạt video.
+description: Analyze YouTube video content from SRT/VTT/TXT files or direct URL. Summarize content, extract key points, analyze main topics, generate reports. Use when user requests "Summarize video X", "Analyze content from SRT", "Key points from [URL]", "Read video content without watching", or needs to quickly understand large batches of videos.
 ---
 
-# 🤖 YouTube Content Analyzer
+# 📊 YouTube Content Analyzer
 
-Đọc phụ đề → tóm tắt nội dung, key points, phân tích chủ đề. Không cần xem video.
+Read subtitles → summarize content, key points, topic analysis. No need to watch the video.
 
 ## Workflow
 
-**Cách 1 — Từ file SRT/TXT có sẵn:**
+**Method 1 - From existing SRT/TXT file:**
 ```
 python scripts/analyze_content.py --file path/to/subtitle.srt
 ```
 
-**Cách 2 — Từ URL (tự tải subtitle rồi phân tích):**
+**Method 2 - From URL (auto-download subtitle then analyze):**
 ```
 python scripts/analyze_content.py --url https://youtu.be/xxxx [--lang vi]
 ```
 
-**Cách 3 — Phân tích hàng loạt:**
+**Method 3 - Batch analysis:**
 ```
 python scripts/analyze_content.py --folder Youtube_Subtitles/ChannelName/
 ```
@@ -32,14 +32,14 @@ Youtube_Analysis/
     └── [Video_Title]_analysis_DD_MM_YYYY.txt
 ```
 
-**Mỗi file analysis gồm:**
-- 📌 **Tóm tắt** (3-5 câu)
+**Each analysis file includes:**
+- 📝 **Summary** (3-5 sentences)
 - 🔑 **Key Points** (bullet list)
-- 🏷️ **Chủ đề chính** (tags)
-- 💬 **Quotes đáng chú ý**
-- 📊 **Thống kê**: độ dài, ngôn ngữ, mật độ thông tin
+- 🏷️ **Main Topics** (tags)
+- 💬 **Notable Quotes**
+- 📊 **Stats**: length, language, information density
 
-## Lưu ý
-- Với video dài (>30 phút), script chia nhỏ thành chunks trước khi phân tích.
-- Kết hợp với `youtube-subtitle-extractor` để pipeline đầy đủ.
-- Xem `references/analysis-prompt.md` để tùy chỉnh prompt phân tích.
+## Notes
+- For long videos (>30 min), the script splits into chunks before analyzing.
+- Combine with `youtube-subtitle-extractor` for a complete pipeline.
+- See `references/analysis-prompt.md` to customize the analysis prompt.

@@ -1,20 +1,20 @@
 ---
 name: youtube-channel-compare
-description: So sánh 2-5 kênh YouTube cùng niche: trending score, tần suất đăng, engagement rate, views trung bình, likes/comments ratio. Xuất bảng so sánh và báo cáo đánh giá. Dùng khi user yêu cầu "So sánh kênh A vs B", "Compare @ChannelA @ChannelB", "Kênh nào tốt hơn", hoặc muốn benchmark kênh đối thủ.
+description: Compare 2-5 YouTube channels by views, engagement rate, trending score, and posting frequency. Use when user asks "Compare @ChannelA vs @ChannelB", "Which channel is stronger in niche X", or needs competitive analysis data.
 ---
 
 # 📊 YouTube Channel Compare
 
-So sánh hiệu suất nhiều kênh YouTube, xuất báo cáo benchmark.
+Compare performance metrics across multiple YouTube channels and generate benchmark reports.
 
-## Cách dùng
+## Usage
 
 ```
 python scripts/compare_channels.py <url1> <url2> [url3...] [--limit N]
 ```
 
-**Ví dụ:**
-- `So sánh @MrBeast vs @PewDiePie` → `python scripts/compare_channels.py https://youtube.com/@MrBeast https://youtube.com/@PewDiePie --limit 20`
+**Example:**
+- `Compare @MrBeast vs @PewDiePie` → `python scripts/compare_channels.py https://youtube.com/@MrBeast https://youtube.com/@PewDiePie --limit 20`
 
 ## Output
 
@@ -23,19 +23,19 @@ Youtube_Compare/
 └── compare_[Chan1]_vs_[Chan2]_DD_MM_YYYY.txt
 ```
 
-**Báo cáo gồm:**
+**Report includes:**
 
-| Metric | Kênh A | Kênh B |
-|--------|--------|--------|
-| Views TB | ... | ... |
-| Likes TB | ... | ... |
-| Comments TB | ... | ... |
-| Trending Score TB | ... | ... |
-| Tần suất đăng | ... | ... |
+| Metric | Channel A | Channel B |
+|--------|-----------|-----------|
+| Avg Views | ... | ... |
+| Avg Likes | ... | ... |
+| Avg Comments | ... | ... |
+| Avg Trending Score | ... | ... |
+| Posting Frequency | ... | ... |
 | Engagement Rate | ... | ... |
 
-**Trending Score**: `(Views × 0.6) + (Likes × 0.3) + (Comments × 0.1)` chuẩn hóa 1-100
+**Trending Score**: `(Views x 0.6) + (Likes x 0.3) + (Comments x 0.1)` normalized 1-100
 
-## Lưu ý
-- Mặc định lấy 20 video gần nhất mỗi kênh (`--limit`).
-- Kênh nào không public stats sẽ hiển thị N/A.
+## Notes
+- Default fetches 20 most recent videos per channel (`--limit` to change).
+- Channels without public stats will show N/A.

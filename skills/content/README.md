@@ -1,17 +1,17 @@
-# 📝 Content
+# ✍️ Content
 
-Các skills hỗ trợ nghiên cứu, sáng tác và quản lý nội dung — từ tìm kiếm nguồn bài đến viết LinkedIn post hoàn chỉnh.
+Skills for researching, creating, and managing content — from finding trending sources to writing complete LinkedIn posts.
 
-| Skill | Mô tả |
-|-------|-------|
-| [content-research](content-research/) | Tìm kiếm bài viết, tin tức trending từ web (Brave + Tavily) |
-| [content-writer](content-writer/) | Viết LinkedIn post từ nguồn bài nghiên cứu (4 format, 6 tone, 2 ngôn ngữ) |
+| Skill | Description |
+|-------|-------------|
+| [content-research](content-research/) | Find trending articles and news from web (Brave + Tavily) |
+| [content-writer](content-writer/) | Write social media posts from research sources (6 formats, 8 tones, 2 languages) |
 
-## Pipeline hoàn chỉnh
+## Complete Pipeline
 
 ```
-content-research → chọn bài → content-writer → LinkedIn post
+content-research → select articles → content-writer → LinkedIn post
 ```
 
 ---
-[← Về trang chủ](../../README.md)
+[← Back to home](../../README.md)

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-parse-srt.py - Parse SRT file thành JSON array
-Tự động detect encoding: UTF-8, UTF-16, UTF-8 BOM, GB2312, Big5, Shift-JIS, EUC-KR, Windows-125x...
+parse-srt.py - Parse SRT file into JSON array
+Auto-detect encoding: UTF-8, UTF-16, UTF-8 BOM, GB2312, Big5, Shift-JIS, EUC-KR, Windows-125x...
 
 Usage: python parse-srt.py <file.srt>
-Output: JSON array ra stdout (UTF-8)
+Output: JSON array to stdout (UTF-8)
 """
 
 import sys
@@ -12,11 +12,11 @@ import json
 import re
 
 def detect_and_decode(filepath):
-    """Đọc file và tự detect encoding, trả về string"""
+    """Read file and auto-detect encoding, return string"""
     with open(filepath, 'rb') as f:
         raw = f.read()
 
-    # 1. Check BOM trước
+    # 1. Check BOM first
     bom_encodings = [
         (b'\xff\xfe\x00\x00', 'utf-32-le'),
         (b'\x00\x00\xfe\xff', 'utf-32-be'),
@@ -28,7 +28,7 @@ def detect_and_decode(filepath):
         if raw.startswith(bom):
             return raw.decode(enc), enc
 
-    # 2. Thử chardet nếu có
+    # 2. Try chardet if available
     try:
         import chardet
         detected = chardet.detect(raw)
@@ -42,7 +42,7 @@ def detect_and_decode(filepath):
     except ImportError:
         pass
 
-    # 3. Fallback: thử lần lượt các encoding phổ biến
+    # 3. Fallback: try common encodings one by one
     encodings_to_try = [
         'utf-8',
         'utf-8-sig',
@@ -64,7 +64,7 @@ def detect_and_decode(filepath):
     for enc in encodings_to_try:
         try:
             text = raw.decode(enc)
-            # Sanity check: SRT phải có timecode pattern
+            # Sanity check: SRT must contain timecode pattern
             if re.search(r'\d{2}:\d{2}:\d{2}[,\.]\d{3}\s*-->', text):
                 return text, enc
         except (UnicodeDecodeError, LookupError):
@@ -78,13 +78,13 @@ def parse_srt(filepath):
     """Parse SRT file, return list of subtitle dicts"""
     content, detected_enc = detect_and_decode(filepath)
 
-    # Log encoding detected (to stderr, không ảnh hưởng JSON stdout)
+    # Log encoding detected (to stderr, does not affect JSON stdout)
     print(f"[parse-srt] Detected encoding: {detected_enc}", file=sys.stderr)
 
     # Normalize line endings
     content = content.replace('\r\n', '\n').replace('\r', '\n')
 
-    # Split thành blocks
+    # Split into blocks
     blocks = re.split(r'\n{2,}', content.strip())
 
     subtitles = []
@@ -96,26 +96,26 @@ def parse_srt(filepath):
             skipped += 1
             continue
 
-        # Line 1: ID (số nguyên)
+        # Line 1: ID (integer)
         try:
             sub_id = int(lines[0])
         except ValueError:
             skipped += 1
             continue
 
-        # Line 2: Timecode (hỗ trợ cả , và . làm separator milliseconds)
+        # Line 2: Timecode (supports both , and . as millisecond separator)
         timecode_line = lines[1]
         if '-->' not in timecode_line:
             skipped += 1
             continue
 
-        # Normalize timecode: đảm bảo dùng dấu phẩy (,) theo chuẩn SRT
+        # Normalize timecode: ensure comma (,) separator per SRT standard
         timecode_line = re.sub(r'(\d{2}:\d{2}:\d{2})\.(\d{3})', r'\1,\2', timecode_line)
 
-        # Lines 3+: Text (join nhiều dòng bằng \n)
+        # Lines 3+: Text (join multiple lines with \n)
         text_lines = lines[2:]
 
-        # Strip HTML tags nếu cần (giữ nguyên để translator xử lý)
+        # Strip HTML tags if needed (keep as-is for translator to handle)
         text = '\n'.join(text_lines)
 
         if not text.strip():

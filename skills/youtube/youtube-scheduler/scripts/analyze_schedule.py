@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 YouTube Scheduler Analyzer
-Tìm khung giờ vàng đăng video từ lịch sử kênh
+Find golden posting hours from a channel's video history
 Usage: python analyze_schedule.py <channel_url> [--limit N] [--tz timezone]
 """
 
@@ -22,7 +22,7 @@ except ImportError:
 OUTPUT_DIR = "Youtube_Schedule"
 
 def fetch_video_schedule(url, limit=50):
-    """Lấy thông tin upload_date và stats từ kênh"""
+    """Fetch upload_date and stats from a channel"""
     cmd = [
         "yt-dlp",
         "--flat-playlist",
@@ -49,7 +49,7 @@ def safe_num(val):
         return 0
 
 def to_local(ts, tz_name):
-    """Chuyển timestamp sang giờ local"""
+    """Convert timestamp to local time"""
     try:
         ts = int(ts)
         dt = datetime.fromtimestamp(ts, tz=timezone.utc)
@@ -59,7 +59,7 @@ def to_local(ts, tz_name):
     except:
         return None
 
-DAY_NAMES = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"]
+DAY_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 def analyze(videos, tz_name):
     by_hour = defaultdict(list)   # hour -> [views]
@@ -92,25 +92,25 @@ def build_report(channel, videos, tz_name):
 
     lines = [f"# ⏰ YouTube Schedule Report: {channel}"]
     lines.append(f"📅 {datetime.now().strftime('%d/%m/%Y %H:%M')} | Timezone: {tz_name or 'UTC'}")
-    lines.append(f"📊 Phân tích từ {len(videos)} video\n")
+    lines.append(f"📊 Analyzed from {len(videos)} videos\n")
 
-    # Top ngày
-    lines.append("## 📅 Ngày đăng tốt nhất (theo views TB)")
+    # Best days
+    lines.append("## 📅 Best Posting Days (by avg views)")
     sorted_days = sorted(by_day.items(), key=lambda x: avg(x[1]), reverse=True)
     for d, views_list in sorted_days:
         bar = "█" * min(int(avg(views_list) / max(avg(v) for _, v in sorted_days) * 20), 20)
-        lines.append(f"  {DAY_NAMES[d]:<10} {bar:<20} {avg(views_list):,.0f} views TB ({len(views_list)} video)")
+        lines.append(f"  {DAY_NAMES[d]:<12} {bar:<20} {avg(views_list):,.0f} avg views ({len(views_list)} videos)")
 
-    # Top giờ
-    lines.append("\n## ⏰ Khung giờ vàng (theo views TB)")
+    # Golden hours
+    lines.append("\n## ⏰ Golden Hours (by avg views)")
     sorted_hours = sorted(by_hour.items(), key=lambda x: avg(x[1]), reverse=True)[:8]
     for h, views_list in sorted_hours:
         bar = "█" * min(int(avg(views_list) / avg(sorted_hours[0][1]) * 15), 15)
-        lines.append(f"  {h:02d}:00-{h+1:02d}:00  {bar:<15} {avg(views_list):,.0f} views TB")
+        lines.append(f"  {h:02d}:00-{h+1:02d}:00  {bar:<15} {avg(views_list):,.0f} avg views")
 
     # Heatmap ASCII (simplified)
-    lines.append("\n## 🗓️ Heatmap (ngày × khung giờ sáng/chiều/tối)")
-    lines.append("         Sáng(6-12)  Chiều(12-18)  Tối(18-24)  Đêm(0-6)")
+    lines.append("\n## 🗓️ Heatmap (day × time period)")
+    lines.append("              Morning(6-12)  Afternoon(12-18)  Evening(18-24)  Night(0-6)")
     for d in range(7):
         morning = avg(sum([heatmap[(d,h)] for h in range(6,12)], []))
         afternoon = avg(sum([heatmap[(d,h)] for h in range(12,18)], []))
@@ -119,37 +119,37 @@ def build_report(channel, videos, tz_name):
         def star(v, max_v):
             return "⭐" * min(int(v / max_v * 3 + 1), 3) if max_v > 0 else "  "
         mx = max(morning, afternoon, evening, night, 1)
-        lines.append(f"  {DAY_NAMES[d]:<10} {star(morning,mx):<12} {star(afternoon,mx):<14} {star(evening,mx):<12} {star(night,mx)}")
+        lines.append(f"  {DAY_NAMES[d]:<12} {star(morning,mx):<15} {star(afternoon,mx):<18} {star(evening,mx):<16} {star(night,mx)}")
 
-    # Top 5 video
-    lines.append("\n## 🏆 Top 5 video views cao nhất")
+    # Top 5 videos
+    lines.append("\n## 🏆 Top 5 Highest-View Videos")
     for views, date_str, title in top5:
         lines.append(f"  - [{date_str}] {title[:60]} — {views:,.0f} views")
 
-    # Khuyến nghị
+    # Recommendation
     if sorted_days and sorted_hours:
         best_day = DAY_NAMES[sorted_days[0][0]]
         best_hour = sorted_hours[0][0]
-        lines.append(f"\n## 💡 Khuyến nghị")
-        lines.append(f"  Đăng vào **{best_day}**, khung giờ **{best_hour:02d}:00 - {best_hour+1:02d}:00** cho hiệu suất tốt nhất.")
+        lines.append(f"\n## 💡 Recommendation")
+        lines.append(f"  Post on **{best_day}**, time slot **{best_hour:02d}:00 - {best_hour+1:02d}:00** for best performance.")
 
     return "\n".join(lines)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="YouTube Scheduler Analyzer")
-    parser.add_argument("url", help="URL kênh YouTube")
-    parser.add_argument("--limit", type=int, default=50, help="Số video phân tích (mặc định: 50)")
-    parser.add_argument("--tz", default="Asia/Ho_Chi_Minh", help="Timezone (mặc định: Asia/Ho_Chi_Minh)")
+    parser.add_argument("url", help="YouTube channel URL")
+    parser.add_argument("--limit", type=int, default=50, help="Number of videos to analyze (default: 50)")
+    parser.add_argument("--tz", default="Asia/Ho_Chi_Minh", help="Timezone (default: Asia/Ho_Chi_Minh)")
     args = parser.parse_args()
 
-    print(f"[*] Đang lấy dữ liệu từ: {args.url}")
+    print(f"[*] Fetching data from: {args.url}")
     videos = fetch_video_schedule(args.url, args.limit)
     if not videos:
-        print("[!] Không lấy được dữ liệu")
+        print("[!] Could not fetch data")
         sys.exit(1)
 
     channel = videos[0].get("channel", "Unknown")
-    print(f"[+] Kênh: {channel} | {len(videos)} video")
+    print(f"[+] Channel: {channel} | {len(videos)} videos")
 
     report = build_report(channel, videos, args.tz)
 
@@ -162,4 +162,4 @@ if __name__ == "__main__":
         f.write(report)
 
     print(f"\n{report}")
-    print(f"\n[✓] Báo cáo lưu tại: {out_path}")
+    print(f"\n[✓] Report saved to: {out_path}")

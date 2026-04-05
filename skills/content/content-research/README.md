@@ -1,55 +1,55 @@
-# content-research — Tìm kiếm bài viết & tin tức trending
+# content-research — Find Trending Articles & News
 
-> Skill OpenClaw tự động tìm kiếm bài viết, tin tức và nguồn nội dung về bất kỳ chủ đề nào từ web. Sử dụng **Brave Search + Tavily** song song để cho kết quả phong phú nhất. Thường dùng trước `content-writer` để chuẩn bị nguồn bài.
-
----
-
-## Skill này dùng để làm gì?
-
-Trước khi viết một bài LinkedIn hay, bạn cần nguồn bài chất lượng. Skill này giúp bạn:
-- Tìm nhanh 10-15 bài viết mới nhất về bất kỳ chủ đề nào
-- Lọc theo loại nguồn: news, blog, LinkedIn, YouTube
-- Tự động gắn tag (AI, Funding, SaaS, Startup...) để dễ lựa chọn
-- Kết hợp 2 search engine (Brave + Tavily) để không bỏ sót bài hay
+> OpenClaw skill that automatically searches for articles, news, and content sources on any topic from the web. Uses **Brave Search + Tavily** in parallel for the richest results. Typically used before `content-writer` to prepare source material.
 
 ---
 
-## Tính năng
+## What is this skill for?
 
-| Tính năng | Chi tiết |
-|-----------|---------|
-| 🔍 Dual Search Engine | Brave Search + Tavily chạy song song |
-| 🔄 Fallback tự động | Nếu 1 engine lỗi → dùng engine còn lại |
-| 🏷️ Auto-tag | Tự động gắn tag: AI, Funding, SaaS, Tools, Trends, Startup, Growth |
-| 📰 Phân loại nguồn | News / Blog / Report / Video / LinkedIn |
-| 🗑️ Dedup tự động | Loại bỏ bài trùng lặp giữa 2 engine |
-| 🔗 Tích hợp | Kết nối trực tiếp với `content-writer` |
+Before writing a great LinkedIn post, you need quality source material. This skill helps you:
+- Quickly find 10-15 latest articles on any topic
+- Filter by source type: news, blog, LinkedIn, YouTube
+- Auto-tag results (AI, Funding, SaaS, Startup...) for easy selection
+- Combine 2 search engines (Brave + Tavily) to never miss good articles
 
 ---
 
-## Cài đặt
+## Features
 
-### Yêu cầu
-- OpenClaw đã cài đặt
-- Brave Search API key (miễn phí 1,000 req/tháng)
-- Tavily API key (miễn phí 1,000 req/tháng)
+| Feature | Details |
+|---------|---------|
+| 🔍 Dual Search Engine | Brave Search + Tavily running in parallel |
+| 🔄 Auto Fallback | If 1 engine fails → use the other engine |
+| 🏷️ Auto-tag | Automatically tag: AI, Funding, SaaS, Tools, Trends, Startup, Growth |
+| 📰 Source Classification | News / Blog / Report / Video / LinkedIn |
+| 🗑️ Auto Dedup | Remove duplicate articles between 2 engines |
+| 🔗 Integration | Direct connection with `content-writer` |
 
-### Cấu hình API keys
+---
 
-**Brave Search** — đã tích hợp sẵn trong OpenClaw. Cấu hình qua:
+## Installation
+
+### Requirements
+- OpenClaw installed
+- Brave Search API key (free 1,000 req/month)
+- Tavily API key (free 1,000 req/month)
+
+### Configure API keys
+
+**Brave Search** — already integrated in OpenClaw. Configure via:
 ```powershell
 openclaw configure --section web
 ```
 
-**Tavily** — thêm vào file `.env` của OpenClaw:
+**Tavily** — add to OpenClaw's `.env` file:
 ```
 # File: ~/.openclaw/.env
 TAVILY_API_KEY=tvly-your-key-here
 ```
 
-Lấy Tavily API key miễn phí tại: [tavily.com](https://tavily.com)
+Get free Tavily API key at: [tavily.com](https://tavily.com)
 
-### Copy skill vào OpenClaw
+### Copy skill to OpenClaw
 
 ```powershell
 # Windows
@@ -61,21 +61,21 @@ cp -r content-research ~/.agents/skills/
 
 ---
 
-## Cách dùng
+## Usage
 
-### Cơ bản
+### Basic
 ```
-Research chủ đề: AI agents 2026
-```
-
-### Tùy chỉnh nguồn
-```
-Tìm bài về "OpenAI funding" chỉ từ news, 1 tuần gần đây
-
-Research "AI marketing tools" từ blog, lấy 15 bài
+Research topic: AI agents 2026
 ```
 
-### Kết quả mẫu
+### Custom sources
+```
+Find articles about "OpenAI funding" from news only, past week
+
+Research "AI marketing tools" from blogs, get 15 articles
+```
+
+### Sample output
 
 ```
 ## Research Results: "AI agents 2026"
@@ -94,25 +94,25 @@ Sources: Brave (8) + Tavily (9) → merged 14 unique
 
 ---
 
-## Tích hợp với content-writer
+## Integration with content-writer
 
-Sau khi có kết quả, chọn bài muốn dùng và chuyển sang viết:
+After getting results, select articles to use and move to writing:
 ```
-Dùng bài 1, 3, 5 để viết LinkedIn post
+Use articles 1, 3, 5 to write a LinkedIn post
 ```
 
-Agent sẽ tự động gọi `content-writer` với các bài đã chọn.
+Agent will automatically call `content-writer` with the selected articles.
 
 ---
 
-## Cấu trúc files
+## File Structure
 
 ```
 content-research/
-├── README.md              ← Bạn đang đọc
-├── SKILL.md               ← Điều khiển agent
+├── README.md              ← You are reading this
+├── SKILL.md               ← Agent instructions
 └── references/
-    └── source-filters.md  ← Cấu hình filter nguồn chi tiết
+    └── source-filters.md  ← Detailed source filter configuration
 ```
 
 ---
@@ -121,7 +121,7 @@ content-research/
   <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp;
   <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp;
   <a href="https://openclaw.mcbai.vn">OpenClaw Cheatsheet</a> &nbsp;·&nbsp;
-  <a href="https://openclaw.mcbai.vn/openclaw101">Khoá học OpenClaw 101</a> &nbsp;·&nbsp;
-  <a href="https://www.facebook.com/groups/openclawxvn">Cộng đồng Facebook</a> &nbsp;·&nbsp;
+  <a href="https://openclaw.mcbai.vn/openclaw101">OpenClaw 101 Course</a> &nbsp;·&nbsp;
+  <a href="https://www.facebook.com/groups/openclawxvn">Facebook Community</a> &nbsp;·&nbsp;
   <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy (Zalo)</a>
 </p>

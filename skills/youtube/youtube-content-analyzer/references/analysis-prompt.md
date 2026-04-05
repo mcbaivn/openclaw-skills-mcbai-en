@@ -1,20 +1,20 @@
 # Analysis Prompt Guide
 
-Khi agent đọc file analysis output, điền vào các phần như sau:
+When the agent reads the analysis output, fill in the sections as follows:
 
-## Tóm tắt
-Viết 3-5 câu mô tả nội dung chính của video. Tập trung vào: chủ đề, thông điệp chính, kết luận.
+## Summary
+Write 3-5 sentences describing the main content of the video. Focus on: topic, main message, conclusions.
 
 ## Key Points
-Liệt kê 5-10 điểm quan trọng nhất dạng bullet. Mỗi điểm 1 câu ngắn gọn.
+List the 5-10 most important points as bullets. Each point should be one concise sentence.
 
-## Chủ đề chính
-Gắn 3-7 tags ngắn, ví dụ: #marketing #kinh-doanh #growth-hack
+## Main Topics
+Assign 3-7 short tags, e.g.: #marketing #business #growth-hack
 
-## Quotes đáng chú ý
-Trích dẫn nguyên văn 2-3 câu có giá trị cao từ nội dung gốc.
+## Notable Quotes
+Quote 2-3 high-value sentences verbatim from the original content.
 
-## Đánh giá mật độ thông tin
-- **Cao**: Video đặc thông tin, ít lặp, phù hợp nghiên cứu sâu
-- **Trung bình**: Cân bằng giữa ví dụ và kiến thức
-- **Thấp**: Nhiều filler, phù hợp nghe giải trí
+## Information Density Rating
+- **High**: Information-dense video, low repetition, suitable for deep research
+- **Medium**: Balanced mix of examples and knowledge
+- **Low**: Much filler content, suitable for light listening/entertainment

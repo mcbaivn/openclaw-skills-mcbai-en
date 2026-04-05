@@ -1,22 +1,22 @@
 ---
 name: youtube-subtitle-extractor
-description: Tải phụ đề (SRT/VTT/TXT) từ video YouTube bằng yt-dlp. Hỗ trợ auto-generated và manual subtitles, đa ngôn ngữ. Dùng khi user yêu cầu "Tải phụ đề video X", "Get subtitles from [URL]", "Extract SRT from @Channel", hoặc cần file phụ đề để phân tích nội dung.
+description: Download subtitles (SRT/VTT/TXT) from YouTube videos using yt-dlp. Supports auto-generated and manual subtitles, multilingual. Use when user asks "Download subtitles for video X", "Get subtitles from [URL]", "Extract SRT from @Channel", or needs subtitle files for content analysis.
 ---
 
-# 📝 YouTube Subtitle Extractor
+# 📥 YouTube Subtitle Extractor
 
-Tải phụ đề từ YouTube video hoặc toàn bộ kênh, xuất ra file `.srt` sạch.
+Download subtitles from YouTube videos or entire channels, output clean `.srt` files.
 
-## Cách dùng
+## Usage
 
 ```
 python scripts/extract_subtitles.py <video_or_channel_url> [--lang vi,en] [--format srt] [--auto]
 ```
 
-**Ví dụ:**
+**Examples:**
 - `Get subtitles from https://youtu.be/xxxx` → `python scripts/extract_subtitles.py https://youtu.be/xxxx`
-- `Tải phụ đề tiếng Việt` → thêm `--lang vi`
-- Chỉ lấy auto-generated → thêm `--auto`
+- `Download Vietnamese subtitles` → add `--lang vi`
+- Auto-generated only → add `--auto`
 
 ## Output
 
@@ -25,10 +25,10 @@ Youtube_Subtitles/
 └── [Video_Title]/
     ├── [title].vi.srt
     ├── [title].en.srt
-    └── [title]_plain.txt   ← text thuần, không có timestamp
+    └── [title]_plain.txt    plain text without timestamps
 ```
 
-## Lưu ý
-- Ưu tiên manual subtitles trước, fallback sang auto-generated nếu không có.
-- File `_plain.txt` dùng cho youtube-content-analyzer.
-- Nếu URL là kênh, tải subtitle tất cả video trong kênh (giới hạn bằng `--limit N`).
+## Notes
+- Prioritizes manual subtitles first, falls back to auto-generated if unavailable.
+- The `_plain.txt` file is used by youtube-content-analyzer.
+- If URL is a channel, downloads subtitles for all videos in channel (limit with `--limit N`).

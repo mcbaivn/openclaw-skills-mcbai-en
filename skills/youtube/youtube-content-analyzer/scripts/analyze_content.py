@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 YouTube Content Analyzer
-Phân tích nội dung từ file SRT/TXT hoặc URL YouTube
+Analyze content from SRT/TXT files or YouTube URL
 Usage: python analyze_content.py --file <path> | --url <url> | --folder <dir>
 """
 
@@ -13,11 +13,11 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-# Thư mục output
+# Output directory
 OUTPUT_DIR = "Youtube_Analysis"
 
 def parse_srt(path):
-    """Đọc file SRT/TXT và trả về text thuần"""
+    """Read SRT/TXT file and return plain text"""
     with open(path, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
     if path.endswith(".srt") or path.endswith(".vtt"):
@@ -28,7 +28,7 @@ def parse_srt(path):
     return content.strip()
 
 def chunk_text(text, max_chars=8000):
-    """Chia text thành chunks nhỏ"""
+    """Split text into smaller chunks"""
     words = text.split()
     chunks, current = [], []
     count = 0
@@ -43,36 +43,36 @@ def chunk_text(text, max_chars=8000):
     return chunks
 
 def analyze_text(text, title="Video"):
-    """Tạo báo cáo phân tích từ plain text"""
+    """Generate analysis report from plain text"""
     chunks = chunk_text(text)
     word_count = len(text.split())
     char_count = len(text)
     
-    # Thống kê cơ bản
-    stats = f"📊 Thống kê: {word_count} từ | {char_count} ký tự | {len(chunks)} phần"
+    # Basic stats
+    stats = f"📊 Stats: {word_count} words | {char_count} characters | {len(chunks)} sections"
     
-    # Ghi report (agent sẽ điền phần AI analysis)
-    report = f"""# 📹 Phân tích: {title}
-📅 {datetime.now().strftime('%d/%m/%Y %H:%M')}
+    # Write report (agent will fill in the AI analysis sections)
+    report = f"""# 📊 Analysis: {title}
+🕐 {datetime.now().strftime('%d/%m/%Y %H:%M')}
 {stats}
 
 ---
 
-## 📌 Tóm tắt
-[Agent sẽ tóm tắt nội dung dưới đây]
+## 📝 Summary
+[Agent will summarize content below]
 
 ## 🔑 Key Points
-[Agent sẽ liệt kê các điểm chính]
+[Agent will list main points]
 
-## 🏷️ Chủ đề chính
-[Agent sẽ gắn tag chủ đề]
+## 🏷️ Main Topics
+[Agent will assign topic tags]
 
-## 💬 Quotes đáng chú ý
-[Agent sẽ trích dẫn câu quan trọng]
+## 💬 Notable Quotes
+[Agent will quote important sentences]
 
 ---
 
-## 📄 Nội dung gốc (để phân tích)
+## 📄 Original Content (for analysis)
 {text[:12000]}{'...[truncated]' if len(text) > 12000 else ''}
 """
     return report
@@ -86,7 +86,7 @@ def process_file(path, out_dir):
     date_str = datetime.now().strftime('%d_%m_%Y')
     out_path = os.path.join(out_dir, f"{title}_analysis_{date_str}.txt")
     
-    # Không ghi đè
+    # Avoid overwriting existing files
     if os.path.exists(out_path):
         i = 1
         while os.path.exists(out_path.replace('.txt', f'_{i}.txt')):
@@ -100,7 +100,7 @@ def process_file(path, out_dir):
     return out_path, text
 
 def download_and_analyze(url, lang="vi,en", out_dir=OUTPUT_DIR):
-    """Tải subtitle từ URL rồi phân tích"""
+    """Download subtitle from URL then analyze"""
     import tempfile
     with tempfile.TemporaryDirectory() as tmpdir:
         cmd = [
@@ -115,7 +115,7 @@ def download_and_analyze(url, lang="vi,en", out_dir=OUTPUT_DIR):
         
         srt_files = list(Path(tmpdir).glob("*.srt"))
         if not srt_files:
-            print("[!] Không tìm thấy phụ đề. Thử --lang en hoặc --auto")
+            print("[!] No subtitles found. Try --lang en or --auto")
             return
         
         for f in srt_files:
@@ -124,11 +124,11 @@ def download_and_analyze(url, lang="vi,en", out_dir=OUTPUT_DIR):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="YouTube Content Analyzer")
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("--file", help="Path đến file SRT/VTT/TXT")
-    group.add_argument("--url", help="URL YouTube video")
-    group.add_argument("--folder", help="Thư mục chứa nhiều file SRT/TXT")
-    parser.add_argument("--lang", default="vi,en", help="Ngôn ngữ phụ đề khi dùng --url")
-    parser.add_argument("--out", default=OUTPUT_DIR, help="Thư mục output")
+    group.add_argument("--file", help="Path to SRT/VTT/TXT file")
+    group.add_argument("--url", help="YouTube video URL")
+    group.add_argument("--folder", help="Folder containing multiple SRT/TXT files")
+    parser.add_argument("--lang", default="vi,en", help="Subtitle language when using --url")
+    parser.add_argument("--out", default=OUTPUT_DIR, help="Output directory")
     args = parser.parse_args()
 
     if args.file:
@@ -138,8 +138,8 @@ if __name__ == "__main__":
     elif args.folder:
         files = list(Path(args.folder).rglob("*.srt")) + list(Path(args.folder).rglob("*_plain.txt"))
         if not files:
-            print(f"[!] Không tìm thấy file SRT/TXT trong: {args.folder}")
+            print(f"[!] No SRT/TXT files found in: {args.folder}")
             sys.exit(1)
         for f in files:
             process_file(str(f), args.out)
-        print(f"\n[✓] Phân tích xong {len(files)} file!")
+        print(f"\n[✓] Finished analyzing {len(files)} files!")

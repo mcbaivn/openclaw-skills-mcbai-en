@@ -1,15 +1,15 @@
-# Download AIO - Lệnh yt-dlp chi tiết
+# Download AIO - Detailed yt-dlp Commands
 
 ## Setup Python path
 
 ```powershell
-# Luôn dùng find-python.ps1 để tìm Python đúng
+# Always use find-python.ps1 to find the correct Python
 $PYTHON = & "$PSScriptRoot\..\scripts\find-python.ps1"
 $OUT = "$env:USERPROFILE\Downloads\yt-dlp"
 New-Item -ItemType Directory -Path $OUT -Force | Out-Null
 ```
 
-## Tải video (best quality - mp4)
+## Download video (best quality - mp4)
 
 ```powershell
 & $PYTHON -m yt_dlp `
@@ -19,7 +19,7 @@ New-Item -ItemType Directory -Path $OUT -Force | Out-Null
   "<URL>"
 ```
 
-## Tải video theo chất lượng cụ thể
+## Download video at specific quality
 
 ```powershell
 # 1080p
@@ -31,62 +31,62 @@ New-Item -ItemType Directory -Path $OUT -Force | Out-Null
 # 480p
 -f "bestvideo[height<=480]+bestaudio/best[height<=480]"
 
-# 360p (nhẹ nhất)
+# 360p (lightest)
 -f "bestvideo[height<=360]+bestaudio/best[height<=360]"
 ```
 
-## Tải audio only
+## Download audio only
 
 ```powershell
-# MP3 (cần ffmpeg)
+# MP3 (requires ffmpeg)
 & $PYTHON -m yt_dlp `
   -x --audio-format mp3 --audio-quality 0 `
   -o "$OUT\%(title)s.%(ext)s" `
   "<URL>"
 
-# M4A (không cần ffmpeg)
+# M4A (no ffmpeg needed)
 & $PYTHON -m yt_dlp `
   -f "bestaudio[ext=m4a]/bestaudio" `
   -o "$OUT\%(title)s.%(ext)s" `
   "<URL>"
 ```
 
-## Tải playlist
+## Download playlist
 
 ```powershell
-# Toàn bộ playlist
+# Full playlist
 & $PYTHON -m yt_dlp `
   -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" `
   --merge-output-format mp4 `
   -o "$OUT\%(playlist_title)s\%(playlist_index)s - %(title)s.%(ext)s" `
   "<PLAYLIST_URL>"
 
-# Giới hạn số lượng (10 video đầu)
+# Limit count (first 10 videos)
 --playlist-end 10
 
-# Bắt đầu từ video thứ N
+# Start from video N
 --playlist-start 5
 
-# Chỉ tải video thứ 3, 5, 7
+# Only download videos 3, 5, 7
 --playlist-items 3,5,7
 ```
 
-## Tải subtitle / phụ đề
+## Download subtitles
 
 ```powershell
-# Phụ đề tự động (auto-generated)
+# Auto-generated subtitles
 & $PYTHON -m yt_dlp `
   --write-auto-sub --sub-lang "vi,en" --skip-download `
   -o "$OUT\%(title)s.%(ext)s" `
   "<URL>"
 
-# Phụ đề chính thức
+# Official subtitles
 --write-sub --sub-lang "vi,en"
 
-# Embed phụ đề vào video
+# Embed subtitles into video
 --embed-subs --sub-lang "vi,en"
 
-# Tải cả video lẫn phụ đề
+# Download both video and subtitles
 & $PYTHON -m yt_dlp `
   -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" `
   --merge-output-format mp4 `
@@ -95,7 +95,7 @@ New-Item -ItemType Directory -Path $OUT -Force | Out-Null
   "<URL>"
 ```
 
-## Tải thumbnail
+## Download thumbnail
 
 ```powershell
 & $PYTHON -m yt_dlp `
@@ -104,69 +104,69 @@ New-Item -ItemType Directory -Path $OUT -Force | Out-Null
   "<URL>"
 ```
 
-## Xem thông tin video (không tải)
+## View video info (without downloading)
 
 ```powershell
-# Thông tin cơ bản
+# Basic info
 & $PYTHON -m yt_dlp --dump-json "<URL>" | ConvertFrom-Json | `
   Select-Object title, duration, view_count, like_count, upload_date, uploader
 
-# Liệt kê tất cả format có sẵn
+# List all available formats
 & $PYTHON -m yt_dlp -F "<URL>"
 ```
 
-## Dùng cookie (cho content cần đăng nhập)
+## Using cookies (for content requiring login)
 
 ```powershell
-# Dùng cookie từ Chrome (phổ biến nhất)
+# Use cookies from Chrome (most common)
 --cookies-from-browser chrome
 
-# Dùng cookie từ Firefox
+# Use cookies from Firefox
 --cookies-from-browser firefox
 
-# Export cookie thủ công (nếu auto không được)
-# Dùng extension "Get cookies.txt LOCALLY" trên Chrome
-# Export ra cookies.txt rồi dùng:
+# Manual cookie export (if auto doesn't work)
+# Use extension "Get cookies.txt LOCALLY" on Chrome
+# Export to cookies.txt then use:
 --cookies path/to/cookies.txt
 ```
 
-## Options hữu ích
+## Useful options
 
 ```powershell
---no-playlist              # Chỉ tải 1 video, bỏ qua playlist
---yes-playlist             # Force tải cả playlist
---download-archive "$OUT\downloaded.txt"  # Lưu lịch sử, skip đã tải
---concurrent-fragments 4   # Tải nhanh hơn (4 luồng song song)
---retries 10               # Retry 10 lần khi lỗi network
---sleep-interval 2         # Chờ 2s giữa các request (tránh rate limit)
---max-sleep-interval 5     # Chờ tối đa 5s
---limit-rate 5M            # Giới hạn tốc độ 5MB/s
---no-overwrites            # Không ghi đè file đã tồn tại
--k                         # Giữ lại file gốc sau khi merge
+--no-playlist              # Only download 1 video, skip playlist
+--yes-playlist             # Force download full playlist
+--download-archive "$OUT\downloaded.txt"  # Save history, skip already downloaded
+--concurrent-fragments 4   # Faster download (4 parallel threads)
+--retries 10               # Retry 10 times on network error
+--sleep-interval 2         # Wait 2s between requests (avoid rate limit)
+--max-sleep-interval 5     # Max wait 5s
+--limit-rate 5M            # Limit speed to 5MB/s
+--no-overwrites            # Don't overwrite existing files
+-k                         # Keep original files after merge
 ```
 
-## Gửi file về Telegram (qua OpenClaw message tool)
+## Send file to Telegram (via OpenClaw message tool)
 
 ```powershell
-# Sau khi tải xong, lấy file mới nhất
+# After download completes, get the newest file
 $file = Get-ChildItem $OUT -Filter "*.mp4" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 $sizeMB = [math]::Round($file.Length / 1MB, 2)
 
 if ($sizeMB -le 50) {
-    # Copy vào workspace để gửi (OpenClaw chỉ cho phép gửi từ workspace)
+    # Copy to workspace to send (OpenClaw only allows sending from workspace)
     $tmpPath = "$env:USERPROFILE\.openclaw\workspace\tmp_send$($file.Extension)"
     Copy-Item $file.FullName $tmpPath -Force
 
-    # Dùng message tool của OpenClaw:
+    # Use OpenClaw message tool:
     # action: send
     # channel: telegram
     # filePath: $tmpPath
     # caption: "✅ $($file.BaseName) ($sizeMB MB)"
 
-    # Sau khi gửi xong, xóa file tạm
+    # After sending, delete temp file
     Remove-Item $tmpPath -Force
 } else {
-    Write-Host "File $sizeMB MB vuot gioi han 50MB Telegram. Da luu tai: $($file.FullName)"
+    Write-Host "File $sizeMB MB exceeds Telegram's 50MB limit. Saved at: $($file.FullName)"
 }
 ```
 

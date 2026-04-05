@@ -1,134 +1,136 @@
-# OpenClaw Skills - MCBAI
+# OpenClaw Skills - MCBAI (English)
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-> **Bộ sưu tập Skills mở rộng cho OpenClaw** - được tuyển chọn và phát triển bởi [MCB AI](https://www.mcbai.vn)
+> **Extended Skills collection for OpenClaw** - curated and developed by [MCB AI](https://www.mcbai.vn)
 
-Tất cả skills đều plug-and-play: tải về, copy vào `~/.agents/skills/`, dùng ngay.
-Một skill có thể thuộc nhiều category.
+> 🌍 **Also available in:** [🇻🇳 Vietnamese Version](https://github.com/mcbaivn/openclaw-skills-mcbai)
 
----
-
-## Danh sách tất cả Skills
-
-| Skill | Mô tả | Category |
-|-------|-------|----------|
-| [download-aio](skills/tien-ich/download-aio/) | Tải video/audio từ 1000+ nền tảng | 🔧 Tiện Ích · 📱 Mạng XH · 🎬 YouTube |
-| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch file SRT sang bất kỳ ngôn ngữ nào (AI cinematic) | 🔧 Tiện Ích · 📱 Mạng XH · 🎬 YouTube |
-| [content-research](skills/content/content-research/) | Tìm bài viết & tin tức trending (Brave + Tavily) | ✍️ Content · 📱 Mạng XH |
-| [content-writer](skills/content/content-writer/) | Viết post đa nền tảng (6 format, 8 tone, EN/VI) | ✍️ Content · 📱 Mạng XH |
-| [youtube-subtitle-extractor](skills/youtube/youtube-subtitle-extractor/) | Tải phụ đề SRT/VTT từ video YouTube (auto + manual, đa ngôn ngữ) | 🎬 YouTube · 🔧 Tiện Ích |
-| [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Đọc SRT/TXT → tóm tắt, key points, tags, quotes nổi bật | 🎬 YouTube · ✍️ Content |
-| [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | So sánh 2-5 kênh: views, engagement, trending score, tần suất đăng | 🎬 YouTube · 📊 Phân Tích |
-| [youtube-scheduler](skills/youtube/youtube-scheduler/) | Phân tích 50 video gần nhất → tìm ngày/giờ vàng đăng, heatmap ASCII | 🎬 YouTube · 📊 Phân Tích |
-
-> 🔄 Cập nhật thêm thường xuyên. **Star repo** để không bỏ lỡ nhé!
+All skills are plug-and-play: download, copy to `~/.agents/skills/`, use immediately.
+A skill can belong to multiple categories.
 
 ---
 
-## Skills theo Category
+## All Skills
 
-### 🔧 Tiện Ích
-*Công cụ hỗ trợ công việc hàng ngày*
+| Skill | Description | Category |
+|-------|-------------|----------|
+| [download-aio](skills/tien-ich/download-aio/) | Download video/audio from 1000+ platforms | 🔧 Utilities · 📱 Social Media · 🎬 YouTube |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate SRT subtitle files to any language (AI cinematic) | 🔧 Utilities · 📱 Social Media · 🎬 YouTube |
+| [content-research](skills/content/content-research/) | Find trending articles & news (Brave + Tavily) | ✍️ Content · 📱 Social Media |
+| [content-writer](skills/content/content-writer/) | Write multi-platform posts (6 formats, 8 tones, EN/VI) | ✍️ Content · 📱 Social Media |
+| [youtube-subtitle-extractor](skills/youtube/youtube-subtitle-extractor/) | Download SRT/VTT subtitles from YouTube (auto + manual, multilingual) | 🎬 YouTube · 🔧 Utilities |
+| [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Read SRT/TXT → summary, key points, tags, notable quotes | 🎬 YouTube · ✍️ Content |
+| [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | Compare 2-5 channels: views, engagement, trending score, posting frequency | 🎬 YouTube · 📊 Analytics |
+| [youtube-scheduler](skills/youtube/youtube-scheduler/) | Analyze 50 recent videos → find golden posting time + ASCII heatmap | 🎬 YouTube · 📊 Analytics |
 
-| Skill | Mô tả |
-|-------|-------|
-| [download-aio](skills/tien-ich/download-aio/) | Tải video/audio từ 1000+ nền tảng (YouTube, TikTok, Facebook...) |
-| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch file SRT phụ đề, tự detect encoding, hỗ trợ mọi ngôn ngữ |
-| [youtube-subtitle-extractor](skills/youtube/youtube-subtitle-extractor/) | Tải phụ đề SRT/VTT/TXT từ YouTube (auto-generated + manual) |
+> 🔄 Updated regularly. **Star this repo** to stay updated!
+
+---
+
+## Skills by Category
+
+### 🔧 Utilities
+*Tools to support daily work*
+
+| Skill | Description |
+|-------|-------------|
+| [download-aio](skills/tien-ich/download-aio/) | Download video/audio from 1000+ platforms (YouTube, TikTok, Facebook...) |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate SRT subtitle files, auto-detect encoding, supports all languages |
+| [youtube-subtitle-extractor](skills/youtube/youtube-subtitle-extractor/) | Download SRT/VTT/TXT subtitles from YouTube (auto-generated + manual) |
 
 ---
 
 ### ✍️ Content
-*Nghiên cứu, viết bài, tạo nội dung*
+*Research, writing, content creation*
 
-| Skill | Mô tả |
-|-------|-------|
-| [content-research](skills/content/content-research/) | Tìm bài viết & tin tức trending từ web (Brave + Tavily song song) |
-| [content-writer](skills/content/content-writer/) | Viết post cho LinkedIn, Facebook, Twitter/X, TikTok, Threads |
-| [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Phân tích SRT/TXT → tóm tắt nội dung, key points, tags gợi ý, quotes hay |
+| Skill | Description |
+|-------|-------------|
+| [content-research](skills/content/content-research/) | Find trending articles & news from web (Brave + Tavily in parallel) |
+| [content-writer](skills/content/content-writer/) | Write posts for LinkedIn, Facebook, Twitter/X, TikTok, Threads |
+| [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Analyze SRT/TXT → content summary, key points, suggested tags, notable quotes |
 
 ---
 
-### 📱 Mạng Xã Hội
-*Quản lý và tối ưu nội dung trên các nền tảng*
+### 📱 Social Media
+*Manage and optimize content across platforms*
 
-| Skill | Mô tả |
-|-------|-------|
-| [download-aio](skills/tien-ich/download-aio/) | Tải video/reels/shorts từ mọi nền tảng về máy |
-| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch phụ đề video trước khi đăng lên mạng xã hội |
-| [content-research](skills/content/content-research/) | Tìm nội dung trending để viết bài |
-| [content-writer](skills/content/content-writer/) | Viết post Facebook, LinkedIn, TikTok caption... |
+| Skill | Description |
+|-------|-------------|
+| [download-aio](skills/tien-ich/download-aio/) | Download videos/reels/shorts from any platform |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate video subtitles before posting to social media |
+| [content-research](skills/content/content-research/) | Find trending content to write about |
+| [content-writer](skills/content/content-writer/) | Write Facebook posts, LinkedIn articles, TikTok captions... |
 
 ---
 
 ### 🎬 YouTube
-*Công cụ dành riêng cho YouTube creators*
+*Tools built specifically for YouTube creators*
 
-> [→ Xem hướng dẫn chi tiết category YouTube](skills/youtube/README.md)
+> [→ See detailed YouTube category guide](skills/youtube/README.md)
 
-| Skill | Mô tả | Dùng khi nào |
-|-------|-------|--------------|
-| [youtube-subtitle-extractor](skills/youtube/youtube-subtitle-extractor/) | Tải phụ đề SRT/VTT từ video YouTube | Cần file phụ đề để dịch hoặc phân tích |
-| [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Đọc SRT/TXT → tóm tắt, key points, tags, quotes | Muốn hiểu nhanh nội dung video mà không cần xem |
-| [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | So sánh 2-5 kênh theo views, engagement, trending score | Nghiên cứu đối thủ, tìm kênh mạnh trong niche |
-| [youtube-scheduler](skills/youtube/youtube-scheduler/) | Phân tích lịch đăng → tìm khung giờ vàng + heatmap ASCII | Muốn tối ưu thời điểm đăng video |
-| [download-aio](skills/tien-ich/download-aio/) | Tải video YouTube, playlist, audio, phụ đề | Cần tải nội dung về máy |
-| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Dịch phụ đề tiếng Anh sang tiếng Việt (và ngược lại) | Dịch SRT sau khi tải về |
+| Skill | Description | When to use |
+|-------|-------------|-------------|
+| [youtube-subtitle-extractor](skills/youtube/youtube-subtitle-extractor/) | Download SRT/VTT subtitles from YouTube | Need subtitle files for translation or analysis |
+| [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Read SRT/TXT → summary, key points, tags, quotes | Want to understand video content without watching |
+| [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | Compare 2-5 channels by views, engagement, trending score | Research competitors, find strong channels in niche |
+| [youtube-scheduler](skills/youtube/youtube-scheduler/) | Analyze posting schedule → find golden hours + ASCII heatmap | Want to optimize video posting time |
+| [download-aio](skills/tien-ich/download-aio/) | Download YouTube videos, playlists, audio, subtitles | Need to download content locally |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate English subtitles to Vietnamese (and vice versa) | Translate SRT after downloading |
 
-**Pipeline gợi ý:**
+**Suggested pipeline:**
 ```
 youtube-subtitle-extractor → youtube-content-analyzer → content-writer
-youtube-channel-compare + youtube-scheduler → tối ưu lịch đăng
+youtube-channel-compare + youtube-scheduler → optimize posting schedule
 ```
 
 ---
 
-### 📊 Phân Tích
-*Phân tích dữ liệu, đo lường hiệu quả*
+### 📊 Analytics
+*Data analysis, performance measurement*
 
-| Skill | Mô tả |
-|-------|-------|
-| [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | So sánh metrics 2-5 kênh: views, likes, comments, trending score, tần suất đăng |
-| [youtube-scheduler](skills/youtube/youtube-scheduler/) | Heatmap ngày/giờ đăng video tối ưu dựa trên lịch sử 50 video gần nhất |
+| Skill | Description |
+|-------|-------------|
+| [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | Compare metrics of 2-5 channels: views, likes, comments, trending score, posting frequency |
+| [youtube-scheduler](skills/youtube/youtube-scheduler/) | Heatmap of optimal video posting days/times based on last 50 videos |
 
 ---
 
-## Cách cài đặt
+## Installation
 
-### Bước 1 - Clone repo
+### Step 1 - Clone repo
 ```powershell
-git clone https://github.com/mcbaivn/openclaw-skills-mcbai.git
+git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 ```
 
-### Bước 2 - Copy skill vào OpenClaw
+### Step 2 - Copy skill to OpenClaw
 ```powershell
-# Windows - ví dụ cài youtube-content-analyzer
-Copy-Item -Recurse openclaw-skills-mcbai\skills\youtube\youtube-content-analyzer $env:USERPROFILE\.agents\skills\
+# Windows - example: install youtube-content-analyzer
+Copy-Item -Recurse openclaw-skills-mcbai-en\skills\youtube\youtube-content-analyzer $env:USERPROFILE\.agents\skills\
 
 # macOS / Linux
-cp -r openclaw-skills-mcbai/skills/youtube/youtube-content-analyzer ~/.agents/skills/
+cp -r openclaw-skills-mcbai-en/skills/youtube/youtube-content-analyzer ~/.agents/skills/
 ```
 
-> Skill nằm trong folder nào cũng được - chỉ cần copy đúng folder skill vào `~/.agents/skills/`
+> The skill can be in any folder - just copy the skill folder directly into `~/.agents/skills/`
 
-### Bước 3 - Cài dependencies (nếu cần)
+### Step 3 - Install dependencies (if needed)
 ```powershell
-powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\.agents\skills\<tên-skill>\scripts\install.ps1
+powershell -ExecutionPolicy Bypass -File $env:USERPROFILE\.agents\skills\<skill-name>\scripts\install.ps1
 ```
 
-### Bước 4 - Dùng ngay!
-Mở chat với OpenClaw agent, gọi skill theo hướng dẫn trong README của từng skill.
+### Step 4 - Use it!
+Open chat with your OpenClaw agent and invoke the skill following the README in each skill folder.
 
 ---
 
-## Cấu trúc repo
+## Repository Structure
 
 ```
-openclaw-skills-mcbai/
+openclaw-skills-mcbai-en/
 ├── README.md
 └── skills/
-    ├── tien-ich/                     🔧 Tiện Ích
+    ├── tien-ich/                     🔧 Utilities
     │   ├── download-aio/
     │   └── subtitle-translator/
     ├── content/                      ✍️ Content
@@ -142,29 +144,29 @@ openclaw-skills-mcbai/
         └── youtube-scheduler/
 ```
 
-> **Lưu ý:** Skill được đặt trong folder theo category chính. Skill có thể thuộc nhiều category (xem bảng ở trên).
-> `SKILL.md` là file OpenClaw đọc để điều khiển agent - bạn chỉ cần đọc `README.md`.
+> **Note:** Skills are placed in folders by primary category. A skill can belong to multiple categories (see table above).
+> `SKILL.md` is the file OpenClaw reads to control the agent - you only need to read `README.md`.
 
 ---
 
-## Về MCB AI
+## About MCB AI
 
 | | |
 |--|--|
 | 🌐 Website | [mcbai.vn](https://www.mcbai.vn/) |
-| 📘 Fanpage | [facebook.com/mcb.ai.vn](https://www.facebook.com/mcb.ai.vn/) |
+| 📘 Facebook | [facebook.com/mcb.ai.vn](https://www.facebook.com/mcb.ai.vn/) |
 | 🎬 YouTube | [youtube.com/@mcbaivn](https://www.youtube.com/@mcbaivn) |
 | 🗒️ OpenClaw Cheatsheet | [openclaw.mcbai.vn](https://openclaw.mcbai.vn/) |
-| 📚 Khóa học OpenClaw 101 | [openclaw.mcbai.vn/openclaw101](https://openclaw.mcbai.vn/openclaw101) |
-| 💬 Cộng đồng Facebook | [OpenClaw AI Kiếm Cơm](https://www.facebook.com/groups/openclawxvn) |
+| 📚 OpenClaw 101 Course | [openclaw.mcbai.vn/openclaw101](https://openclaw.mcbai.vn/openclaw101) |
+| 💬 Facebook Community | [OpenClaw AI Kiếm Cơm](https://www.facebook.com/groups/openclawxvn) |
 | 🎓 MCB AI Academy (Zalo) | [zalo.me/g/mmqkhi259](https://zalo.me/g/mmqkhi259) |
 
 ---
 
-## Đóng góp
+## Contributing
 
-Có skill hay muốn chia sẻ? Tạo Pull Request hoặc liên hệ qua Fanpage MCB AI.
+Have a great skill to share? Create a Pull Request or contact us via MCB AI Fanpage.
 
 ---
 
-<p align="center">Made with ❤️ by <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp; <a href="https://openclaw.mcbai.vn/openclaw101">Học OpenClaw 101 </a> &nbsp;·&nbsp; <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy</a></p>
+<p align="center">Made with ❤️ by <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp; <a href="https://openclaw.mcbai.vn/openclaw101">OpenClaw 101</a> &nbsp;·&nbsp; <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy</a></p>

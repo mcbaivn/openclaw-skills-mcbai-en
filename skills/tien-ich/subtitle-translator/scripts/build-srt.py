@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-build-srt.py - Ghép subtitles đã dịch thành file SRT chuẩn
+build-srt.py - Reassemble translated subtitles into a standard SRT file
 Usage: python build-srt.py <original.srt> <translated.json> <output.srt>
 """
 
@@ -11,7 +11,7 @@ import importlib.util
 
 
 def parse_timecodes(filepath):
-    """Đọc timecodes từ file SRT gốc bằng parse-srt.py"""
+    """Read timecodes from the original SRT file using parse-srt.py"""
     spec = importlib.util.spec_from_file_location(
         "parse_srt",
         os.path.join(os.path.dirname(__file__), "parse-srt.py")

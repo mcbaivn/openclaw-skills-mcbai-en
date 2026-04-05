@@ -1,34 +1,34 @@
 # 🎬 YouTube
 
-Các skills phân tích, khai thác và tối ưu hóa nội dung YouTube — từ tải phụ đề đến phân tích lịch đăng và so sánh kênh.
+Skills for analyzing, extracting, and optimizing YouTube content — from downloading subtitles to analyzing posting schedules and comparing channels.
 
-| Skill | Mô tả |
-|-------|-------|
-| [youtube-subtitle-extractor](youtube-subtitle-extractor/) | Tải phụ đề SRT/VTT từ video YouTube (auto-generated + manual, đa ngôn ngữ) |
-| [youtube-content-analyzer](youtube-content-analyzer/) | Đọc SRT/TXT → tóm tắt, key points, tags, quotes nổi bật |
-| [youtube-channel-compare](youtube-channel-compare/) | So sánh 2-5 kênh: views, engagement, trending score, tần suất đăng |
-| [youtube-scheduler](youtube-scheduler/) | Phân tích 50 video gần nhất → tìm ngày/giờ vàng đăng, heatmap ASCII |
+| Skill | Description |
+|-------|-------------|
+| [youtube-subtitle-extractor](youtube-subtitle-extractor/) | Download SRT/VTT subtitles from YouTube videos (auto-generated + manual, multilingual) |
+| [youtube-content-analyzer](youtube-content-analyzer/) | Read SRT/TXT → summary, key points, tags, notable quotes |
+| [youtube-channel-compare](youtube-channel-compare/) | Compare 2-5 channels: views, engagement, trending score, posting frequency |
+| [youtube-scheduler](youtube-scheduler/) | Analyze 50 recent videos → find golden posting day/time, ASCII heatmap |
 
-## Pipeline gợi ý
+## Suggested Pipeline
 
 ```
-youtube-subtitle-extractor  →  youtube-content-analyzer  →  content-writer
-         ↓
-youtube-channel-compare  +  youtube-scheduler  →  tối ưu lịch đăng
+youtube-subtitle-extractor → youtube-content-analyzer → content-writer
+         
+youtube-channel-compare  +  youtube-scheduler → optimize posting schedule
 ```
 
-## Ví dụ workflow
+## Example Workflows
 
-**Nghiên cứu nội dung đối thủ:**
-1. Dùng `youtube-channel-compare` → tìm kênh mạnh nhất trong niche
-2. Dùng `youtube-subtitle-extractor` → tải SRT các video top của kênh đó
-3. Dùng `youtube-content-analyzer` → phân tích key points, quotes, cấu trúc
-4. Dùng `content-writer` → tạo bài viết từ insight thu thập được
+**Research competitor content:**
+1. Use `youtube-channel-compare` → find the strongest channel in the niche
+2. Use `youtube-subtitle-extractor` → download SRT of top videos from that channel
+3. Use `youtube-content-analyzer` → analyze key points, quotes, structure
+4. Use `content-writer` → create posts from insights gathered
 
-**Tối ưu lịch đăng:**
-1. Dùng `youtube-scheduler` → phân tích kênh của bạn (hoặc đối thủ)
-2. Xem heatmap → chọn khung giờ vàng
-3. Lên lịch đăng theo khuyến nghị
+**Optimize posting schedule:**
+1. Use `youtube-scheduler` → analyze your own channel (or a competitor's)
+2. View the heatmap → pick the golden time slot
+3. Schedule posts following the recommendations
 
 ---
-[← Về trang chủ](../../README.md)
+[← Back to home](../../README.md)

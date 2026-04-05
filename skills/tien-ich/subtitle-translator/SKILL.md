@@ -1,60 +1,60 @@
 ---
 name: subtitle-translator
-description: Translate SRT subtitle files into any target language using AI. Processes subtitles in batches to handle large files efficiently, preserves exact SRT format and timing, and outputs a new translated SRT file. Use this skill when the user wants to translate subtitles, translate an SRT file, dịch phụ đề, dịch file srt, translate movie subtitles, or asks to convert subtitles to another language. Triggers on phrases like "dịch phụ đề", "translate subtitles", "dịch file srt", "translate srt", "dịch sang tiếng Việt", or when user uploads/pastes an SRT file and asks for translation.
+description: Translate SRT subtitle files into any target language using AI. Processes subtitles in batches to handle large files efficiently, preserves exact SRT format and timing, and outputs a new translated SRT file. Use this skill when the user wants to translate subtitles, translate an SRT file, translate movie subtitles, or asks to convert subtitles to another language. Triggers on phrases like "translate subtitles", "translate srt", "translate to Vietnamese", or when user uploads/pastes an SRT file and asks for translation.
 ---
 
 # Subtitle Translator Skill
 
-Dịch file SRT sang bất kỳ ngôn ngữ nào. Xử lý theo lô (batch), giữ nguyên format và timing SRT, xuất file SRT mới.
+Translate SRT files into any language. Processes in batches, preserves SRT format and timing, outputs a new SRT file.
 
 ## Workflow
 
-### Step 1: Thu thập đầu vào
+### Step 1: Gather inputs
 
-Hỏi user nếu chưa có:
-1. **File SRT** — path đến file hoặc paste nội dung trực tiếp
-2. **Ngôn ngữ đích** — ví dụ: "Vietnamese", "English", "Japanese" (default: Vietnamese)
-3. **Batch size** — số dòng text mỗi lô API call (default: 50, max: 100)
-4. **Output path** — mặc định: cùng thư mục file gốc, thêm `_vi` hoặc `_<lang>` vào tên file
+Ask user if not provided:
+1. **SRT file** - path to file or paste content directly
+2. **Target language** - e.g.: "Vietnamese", "English", "Japanese" (default: Vietnamese)
+3. **Batch size** - number of text lines per API call (default: 50, max: 100)
+4. **Output path** - default: same folder as original file, append `_vi` or `_<lang>` to filename
 
-### Step 2: Parse file SRT
+### Step 2: Parse SRT file
 
-Dùng `scripts/parse-srt.py` để đọc và parse file SRT. Script tự động detect encoding:
+Use `scripts/parse-srt.py` to read and parse the SRT file. Script auto-detects encoding:
 
-**Encoding được hỗ trợ:**
+**Supported encodings:**
 - UTF-8, UTF-8 BOM, UTF-16 LE/BE, UTF-32
-- GB18030 / GBK / GB2312 (Tiếng Trung giản thể)
-- Big5 (Tiếng Trung phồn thể)
-- Shift-JIS, EUC-JP (Tiếng Nhật)
-- EUC-KR, CP949 (Tiếng Hàn)
-- Windows-1252/1250/1251 (Latin/Trung Âu/Cyrillic)
-- Latin-1 (fallback cuối cùng, không bao giờ lỗi)
+- GB18030 / GBK / GB2312 (Simplified Chinese)
+- Big5 (Traditional Chinese)
+- Shift-JIS, EUC-JP (Japanese)
+- EUC-KR, CP949 (Korean)
+- Windows-1252/1250/1251 (Latin/Central European/Cyrillic)
+- Latin-1 (last resort, never fails)
 
-**Thứ tự detect:**
-1. BOM bytes (chính xác nhất)
-2. chardet library (nếu đã cài: `pip install chardet`)
-3. Thử lần lượt từng encoding phổ biến + kiểm tra timecode pattern
+**Detection order:**
+1. BOM bytes (most accurate)
+2. chardet library (if installed: `pip install chardet`)
+3. Try each common encoding + validate with timecode pattern
 4. Fallback latin-1
 
 ```python
-# Mỗi subtitle block:
+# Each subtitle block:
 {
   "id": 1,
   "timecode": "00:00:01,000 --> 00:00:03,000",
-  "text": "Hello world"  # có thể nhiều dòng, join bằng \n
+  "text": "Hello world"  # may be multi-line, joined with \n
 }
 ```
 
-Chạy:
+Run:
 ```powershell
 python scripts/parse-srt.py "path/to/file.srt"
-# Output: JSON array ra stdout (UTF-8)
-# Encoding detected sẽ log ra stderr
+# Output: JSON array to stdout (UTF-8)
+# Detected encoding logged to stderr
 ```
 
-### Step 3: Dịch theo lô (batch)
+### Step 3: Translate in batches
 
-Chia danh sách subtitle thành các lô `batch_size` dòng. Với mỗi lô:
+Split subtitle list into batches of `batch_size` lines. For each batch:
 
 **System prompt:**
 ```
@@ -69,7 +69,7 @@ STRICT RULES:
 6. Return a valid JSON array only: [{"id": 1, "text": "translation"}]
 ```
 
-**User message (mỗi lô):**
+**User message (per batch):**
 ```json
 [
   {"id": 1, "text": "Hello world"},
@@ -78,50 +78,50 @@ STRICT RULES:
 ]
 ```
 
-Gọi AI (dùng built-in LLM — không cần external API):
+Call AI (using built-in LLM - no external API needed):
 - Parse JSON response
-- Nếu lỗi parse: retry lô đó 1 lần
-- Map kết quả vào subtitle objects theo `id`
+- If parse error: retry batch once
+- Map results back to subtitle objects by `id`
 
-Báo tiến độ: `Đang dịch lô {n}/{total}... ({percent}%)`
+Report progress: `Translating batch {n}/{total}... ({percent}%)`
 
-### Step 4: Xuất file SRT mới
+### Step 4: Build new SRT file
 
-Dùng `scripts/build-srt.py` để ghép lại thành file SRT hoàn chỉnh:
+Use `scripts/build-srt.py` to reassemble into a complete SRT file:
 
 ```powershell
-# Input: JSON array subtitles đã dịch + file gốc để lấy timecodes
+# Input: translated subtitles JSON array + original file for timecodes
 python scripts/build-srt.py "original.srt" "translated.json" "output.srt"
 ```
 
-Format SRT chuẩn:
+Standard SRT format:
 ```
 1
 00:00:01,000 --> 00:00:03,000
-Xin chào thế giới
+Hello world
 
 2
 00:00:04,000 --> 00:00:06,000
-Bạn có khỏe không?
+How are you?
 
 ```
 
-### Step 5: Báo kết quả
+### Step 5: Report results
 
-- Thông báo file output đã tạo tại đâu
-- Số subtitle blocks đã dịch
-- Hỏi có muốn review hoặc chỉnh sửa không
+- Notify where output file was created
+- Number of subtitle blocks translated
+- Ask if user wants to review or edit
 
-## Lưu ý quan trọng
+## Important Notes
 
-- Giữ nguyên **toàn bộ timecode** — không thay đổi `-->` timestamps
-- Dòng trống giữa các block là bắt buộc trong SRT
-- Subtitle text có thể nhiều dòng — join bằng `\n` khi gửi, split lại khi xuất
-- HTML tags trong sub (như `<i>`, `<b>`, `<font>`) — giữ nguyên, chỉ dịch text bên trong
-- Nếu file lớn (>500 dòng): báo user ước tính thời gian trước khi chạy
+- Preserve **all timecodes** - do not alter `-->` timestamps
+- Blank lines between blocks are mandatory in SRT
+- Subtitle text may be multi-line - join with `\n` when sending, split back when outputting
+- HTML tags in subs (like `<i>`, `<b>`, `<font>`) - preserve them, only translate text inside
+- If large file (>500 lines): estimate time for user before running
 
-## Xử lý lỗi
+## Error Handling
 
-- JSON parse error từ AI: retry lô đó, nếu vẫn lỗi thì giữ nguyên text gốc và báo user
-- File SRT malformed: dùng `scripts/parse-srt.py` sẽ cố gắng recover, báo số dòng bị skip
-- Encoding: luôn đọc/ghi UTF-8
+- JSON parse error from AI: retry batch, if still fails keep original text and notify user
+- Malformed SRT file: `scripts/parse-srt.py` will attempt recovery, report skipped lines
+- Encoding: always read/write UTF-8

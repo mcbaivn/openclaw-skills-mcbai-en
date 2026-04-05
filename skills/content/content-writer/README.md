@@ -1,113 +1,113 @@
-# content-writer — Viết post cho mọi nền tảng mạng xã hội
+# content-writer — Write Posts for Any Social Media Platform
 
-> Skill OpenClaw tạo post chất lượng cao cho **LinkedIn, Facebook, Twitter/X, TikTok, Threads** từ bất kỳ nguồn bài nào. Hỗ trợ **6 format, 8 tone, 2 ngôn ngữ**. Output plain text sẵn sàng đăng — không cần chỉnh sửa thêm.
-
----
-
-## Skill này dùng để làm gì?
-
-Bạn có ý tưởng, bài nghiên cứu, hoặc data hay — nhưng viết post tốn quá nhiều thời gian? Skill này giúp bạn:
-- Biến bất kỳ nguồn bài nào thành post đăng ngay
-- Chọn đúng format cho từng nền tảng (Facebook cần Story/Hook-List, LinkedIn cần Toplist/POV)
-- Điều chỉnh tone phù hợp mục tiêu (viral, giáo dục, kể chuyện, phân tích...)
-- Viết tiếng Anh hoặc tiếng Việt tự nhiên
-- Output chuẩn ngay — không markdown, không format lạ
+> OpenClaw skill that generates high-quality posts for **LinkedIn, Facebook, Twitter/X, TikTok, Threads** from any source material. Supports **6 formats, 8 tones, 2 languages**. Output is plain text ready to publish — no editing needed.
 
 ---
 
-## Nền tảng hỗ trợ
+## What is this skill for?
 
-| Nền tảng | Style | Format phù hợp |
-|----------|-------|----------------|
+You have ideas, research articles, or great data — but writing posts takes too much time? This skill helps you:
+- Turn any source material into a publish-ready post
+- Choose the right format for each platform (Facebook needs Story/Hook-List, LinkedIn needs Toplist/POV)
+- Adjust tone to match your goal (viral, educational, storytelling, analytical...)
+- Write naturally in English or Vietnamese
+- Output is ready to go — no markdown, no strange formatting
+
+---
+
+## Supported Platforms
+
+| Platform | Style | Best Formats |
+|----------|-------|-------------|
 | LinkedIn | Professional, data-driven | Toplist, POV, Case Study, How-to |
 | Facebook | Conversational, emotional | Story, Hook-List-CTA, POV |
-| Twitter/X | Punchy, opinionated | POV ngắn, Hook-List ngắn |
-| TikTok | Casual, FOMO | Hook-List-CTA, How-to ngắn |
-| Threads | Casual, unfiltered | POV, Story ngắn |
+| Twitter/X | Punchy, opinionated | Short POV, Short Hook-List |
+| TikTok | Casual, FOMO | Hook-List-CTA, Short How-to |
+| Threads | Casual, unfiltered | POV, Short Story |
 
 ---
 
-## 6 Format có sẵn
+## 6 Built-in Formats
 
 ### 📋 Toplist
-Danh sách có số thứ tự với data points.
+Numbered list with data points.
 ```
-HOOK: Bold claim + số cụ thể
-CONTEXT: Tại sao quan trọng
-LIST: Numbered items + metric
-TAKEAWAY: Pattern rút ra
-CTA: Câu hỏi engagement
+HOOK: Bold claim + specific number
+CONTEXT: Why this matters now
+LIST: Numbered items + metrics
+TAKEAWAY: Pattern that emerges
+CTA: Engagement question
 ```
 
 ### 💡 POV
-Quan điểm táo bạo, có data hỗ trợ. Tạo tranh luận.
+Bold opinion backed by data. Creates debate.
 ```
 HOOK: Contrarian opening
-DATA: Bằng chứng số liệu
-ANALYSIS: Ý nghĩa
-PREDICTION: Dự đoán rõ ràng
-CTA: Câu hỏi kích comment
+DATA: Evidence with numbers
+ANALYSIS: What this means
+PREDICTION: Clear prediction
+CTA: Comment-provoking question
 ```
 
 ### 🏢 Case Study
-Deep-dive một câu chuyện cụ thể.
+Deep-dive into a specific story.
 ```
-HOOK: Metric ấn tượng nhất
-CONTEXT: Vấn đề ban đầu
-WHAT THEY DID: Chiến lược + số
-RESULTS: Kết quả cụ thể
-LESSON: Bài học không ai nói
+HOOK: Most impressive metric
+CONTEXT: The original problem
+WHAT THEY DID: Strategy + numbers
+RESULTS: Concrete outcomes
+LESSON: Non-obvious takeaway
 CTA: Engagement question
 ```
 
 ### 🛠️ How-to
-Hướng dẫn từng bước có thể làm ngay.
+Step-by-step guide you can act on immediately.
 ```
-HOOK: Hứa hẹn kết quả rõ ràng
-WHY: Người ta hay làm sai gì
-STEPS: 3-7 bước action verbs
-PRO TIP: Shortcut ít ai biết
-RESULT: Đạt được gì
-CTA: "Thử bước 1 ngay hôm nay"
+HOOK: Promise a clear outcome
+WHY: What people get wrong
+STEPS: 3-7 steps with action verbs
+PRO TIP: Shortcut few people know
+RESULT: What you'll achieve
+CTA: "Try step 1 today"
 ```
 
 ### 📖 Story *(Facebook-optimized)*
-Narrative cảm xúc, share rate cao.
+Emotional narrative, high share rate.
 ```
-OPENING SCENE: Khoảnh khắc cụ thể
-TENSION: Xung đột leo thang
+OPENING SCENE: Specific moment
+TENSION: Conflict escalates
 TURNING POINT: Aha moment
-RESOLUTION: Kết quả + số liệu
+RESOLUTION: Results + numbers
 LESSON: Non-obvious takeaway
-CTA: Câu hỏi relatable / tag prompt
+CTA: Relatable question / tag prompt
 ```
 
 ### 🎯 Hook-List-CTA *(Facebook viral)*
-Format đơn giản, viral nhất Facebook.
+Simplest format, most viral on Facebook.
 ```
 HOOK (1 line): Stop-the-scroll
-LIST: 5-10 items ngắn, cụ thể
+LIST: 5-10 short, specific items
 CTA: Tag / Share / Comment prompt
 ```
 
 ---
 
-## 8 Tone có sẵn
+## 8 Built-in Tones
 
-| Tone | Phong cách | Tốt cho |
-|------|-----------|---------|
-| Default | Data-driven, tự tin | Mọi nền tảng |
-| Bold | Táo bạo, contrarian | LinkedIn, Twitter/X |
-| Educational | Dạy học, dùng ví dụ | LinkedIn, Facebook |
-| Storytelling | Kể chuyện, cảm xúc | Facebook, LinkedIn |
-| Analytical | Phân tích, so sánh | LinkedIn, Twitter/X |
+| Tone | Style | Best For |
+|------|-------|---------|
+| Default | Data-driven, confident | All platforms |
+| Bold | Provocative, contrarian | LinkedIn, Twitter/X |
+| Educational | Teaching, uses examples | LinkedIn, Facebook |
+| Storytelling | Narrative, emotional | Facebook, LinkedIn |
+| Analytical | Analysis, comparisons | LinkedIn, Twitter/X |
 | Viral | FOMO, urgency, share-bait | Facebook, TikTok |
-| Empathetic | Ấm áp, relatable, community | Facebook, Threads |
-| Custom | Bạn tự mô tả | Mọi nền tảng |
+| Empathetic | Warm, relatable, community | Facebook, Threads |
+| Custom | You describe your own | All platforms |
 
 ---
 
-## Cài đặt
+## Installation
 
 ```powershell
 # Windows
@@ -119,60 +119,60 @@ cp -r content-writer ~/.agents/skills/
 
 ---
 
-## Cách dùng
+## Usage
 
-### Đơn giản nhất
+### Simplest way
 ```
-Viết post Facebook từ bài này: [paste nội dung]
-```
-
-### Chỉ định đầy đủ
-```
-Viết Story post Facebook, tone Viral, tiếng Việt, medium length từ bài này: [URL hoặc nội dung]
+Write a Facebook post from this article: [paste content]
 ```
 
-### Nhiều nền tảng cùng lúc
+### Full specification
 ```
-Viết cùng 1 nội dung thành 3 version: LinkedIn (Toplist), Facebook (Story), Twitter (POV ngắn)
+Write a Story post for Facebook, Viral tone, English, medium length from this article: [URL or content]
 ```
 
-### Sau khi research xong
+### Multiple platforms at once
 ```
-Dùng bài 1 và 3 để viết Hook-List-CTA cho Facebook, tiếng Việt
+Write the same content in 3 versions: LinkedIn (Toplist), Facebook (Story), Twitter (short POV)
+```
+
+### After finishing research
+```
+Use articles 1 and 3 to write a Hook-List-CTA for Facebook, in English
 ```
 
 ---
 
-## Quy tắc output
+## Output Rules
 
-Post luôn là plain text thuần:
-- Không asterisk (`*`) — không bao giờ
-- Không markdown (`**`, `#`, `[]`)
-- Không em dash (`—`) — dùng `-` hoặc dấu phẩy
-- Không URL trong bài
-- Nhấn mạnh bằng CAPS: `"Đây là CƠ HỘI thực sự"`
-- List: dùng số hoặc `→` arrows
-- Emoji: tự nhiên theo nền tảng (Facebook thoải mái hơn LinkedIn)
+Posts are always pure plain text:
+- No asterisks (`*`) — never
+- No markdown (`**`, `#`, `[]`)
+- No em dashes (`—`) — use `-` or commas
+- No URLs in post body
+- Emphasis uses CAPS: `"This is a REAL opportunity"`
+- Lists: use numbers or `→` arrows
+- Emoji: natural per platform style (Facebook is more relaxed than LinkedIn)
 
 ---
 
-## Cấu trúc files
+## File Structure
 
 ```
 content-writer/
-├── README.md                      ← Bạn đang đọc
-├── SKILL.md                       ← Điều khiển agent
+├── README.md                      ← You are reading this
+├── SKILL.md                       ← Agent instructions
 └── references/
-    ├── brand-context.md           ← Brand identity MCB AI
-    ├── platform-rules.md          ← Rules cho từng nền tảng
-    ├── format-toplist.md          ← Format Toplist
-    ├── format-pov.md              ← Format POV
-    ├── format-case-study.md       ← Format Case Study
-    ├── format-how-to.md           ← Format How-to
-    ├── format-story.md            ← Format Story (Facebook)
-    ├── format-hook-list-cta.md    ← Format Hook-List-CTA viral
-    ├── tone-presets.md            ← 8 tone preset chi tiết
-    └── formatting-rules.md        ← Rules bắt buộc
+    ├── brand-context.md           ← MCB AI brand identity
+    ├── platform-rules.md          ← Rules per platform
+    ├── format-toplist.md          ← Toplist format
+    ├── format-pov.md              ← POV format
+    ├── format-case-study.md       ← Case Study format
+    ├── format-how-to.md           ← How-to format
+    ├── format-story.md            ← Story format (Facebook)
+    ├── format-hook-list-cta.md    ← Hook-List-CTA viral format
+    ├── tone-presets.md            ← 8 detailed tone presets
+    └── formatting-rules.md        ← Mandatory rules
 ```
 
 ---
@@ -181,7 +181,7 @@ content-writer/
   <a href="https://www.mcbai.vn">MCB AI</a> &nbsp;·&nbsp;
   <a href="https://www.youtube.com/@mcbaivn">YouTube</a> &nbsp;·&nbsp;
   <a href="https://openclaw.mcbai.vn">OpenClaw Cheatsheet</a> &nbsp;·&nbsp;
-  <a href="https://openclaw.mcbai.vn/openclaw101">Khoá học OpenClaw 101</a> &nbsp;·&nbsp;
-  <a href="https://www.facebook.com/groups/openclawxvn">Cộng đồng Facebook</a> &nbsp;·&nbsp;
+  <a href="https://openclaw.mcbai.vn/openclaw101">OpenClaw 101 Course</a> &nbsp;·&nbsp;
+  <a href="https://www.facebook.com/groups/openclawxvn">Facebook Community</a> &nbsp;·&nbsp;
   <a href="https://zalo.me/g/mmqkhi259">MCB AI Academy (Zalo)</a>
 </p>

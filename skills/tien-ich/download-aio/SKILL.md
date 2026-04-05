@@ -1,72 +1,72 @@
 ---
 name: download-aio
-description: Download videos, audio, playlists, subtitles, and thumbnails from ANY platform (YouTube, TikTok, Instagram, Facebook, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, and 1000+ more) using yt-dlp. After download, automatically send file to Telegram if under 50MB. Use this skill when the user wants to download video, audio, playlist, reel, short, clip, subtitle, or thumbnail from any website or social media platform. Triggers on phrases like "tải video", "download video", "tải nhạc", "download audio", "tải playlist", "download từ YouTube/TikTok/Facebook/Instagram", "lưu video", "save video", or when user pastes a URL from a video platform.
+description: Download videos, audio, playlists, subtitles, and thumbnails from ANY platform (YouTube, TikTok, Instagram, Facebook, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, and 1000+ more) using yt-dlp. After download, automatically send file to Telegram if under 50MB. Use this skill when the user wants to download video, audio, playlist, reel, short, clip, subtitle, or thumbnail from any website or social media platform. Triggers on phrases like "download video", "download audio", "download playlist", "download from YouTube/TikTok/Facebook/Instagram", "save video", or when user pastes a URL from a video platform.
 ---
 
 # Download AIO Skill
 
-Tải video, audio, playlist, subtitle, thumbnail từ 1000+ nền tảng bằng yt-dlp. Sau khi tải tự động gửi file về Telegram nếu dung lượng <= 50MB.
+Download video, audio, playlist, subtitle, thumbnail from 1000+ platforms using yt-dlp. After downloading, automatically send file to Telegram if size <= 50MB.
 
-## Cài đặt (chạy lần đầu)
+## Installation (first time)
 
-Trước khi dùng, chạy script cài đặt để kiểm tra và cài đầy đủ dependencies:
+Before using, run the install script to check and install all dependencies:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/install.ps1
 ```
 
-Script sẽ tự động:
-1. Kiểm tra Python → hướng dẫn cài nếu thiếu
-2. Cài yt-dlp
-3. Kiểm tra ffmpeg → cài qua Chocolatey nếu thiếu
-4. Tạo thư mục Downloads mặc định
-5. Verify toàn bộ setup
+The script will automatically:
+1. Check Python → guide installation if missing
+2. Install yt-dlp
+3. Check ffmpeg → install via Chocolatey if missing
+4. Create default Downloads folder
+5. Verify entire setup
 
-## Cách dùng (User Guide)
+## Usage (User Guide)
 
-### Cách đơn giản nhất
-Chỉ cần paste URL vào chat là xong:
+### Simplest way
+Just paste a URL into chat:
 ```
 https://www.youtube.com/watch?v=...
 https://www.tiktok.com/@user/video/...
 https://www.facebook.com/reel/...
 ```
 
-Agent sẽ tự tải về + gửi vào Telegram.
+Agent will auto-download + send to Telegram.
 
-### Tùy chỉnh nâng cao
-Có thể yêu cầu cụ thể hơn:
-- "Tải audio mp3 từ [URL]"
-- "Tải playlist này, chỉ lấy 10 video đầu: [URL]"
-- "Tải video 720p từ [URL]"
-- "Tải phụ đề tiếng Việt từ [URL]"
-- "Tải thumbnail từ [URL]"
+### Advanced options
+You can also specify:
+- "Download audio mp3 from [URL]"
+- "Download this playlist, first 10 videos only: [URL]"
+- "Download video 720p from [URL]"
+- "Download Vietnamese subtitles from [URL]"
+- "Download thumbnail from [URL]"
 
 ## Workflow
 
-### Step 1: Kiểm tra dependencies
+### Step 1: Check dependencies
 
-Chạy scripts/check.ps1 để verify yt-dlp và ffmpeg có sẵn. Nếu thiếu, chạy scripts/install.ps1.
+Run scripts/check.ps1 to verify yt-dlp and ffmpeg are available. If missing, run scripts/install.ps1.
 
-### Step 2: Xác định yêu cầu
+### Step 2: Identify requirements
 
-Thu thập từ user (nếu không có thì dùng default):
+Collect from user (use defaults if not specified):
 
-| Tham số | Default | Tùy chọn |
-|---------|---------|-----------|
-| URL | (bắt buộc) | - |
-| Loại tải | video | video / audio / playlist / subtitle / thumbnail |
-| Chất lượng | best | best / 1080p / 720p / 480p / 360p |
+| Parameter | Default | Options |
+|-----------|---------|---------|
+| URL | (required) | - |
+| Download type | video | video / audio / playlist / subtitle / thumbnail |
+| Quality | best | best / 1080p / 720p / 480p / 360p |
 | Format | mp4 (video), mp3 (audio) | mp4 / webm / mkv / mp3 / m4a |
-| Thư mục lưu | Downloads\yt-dlp\ | bất kỳ đường dẫn nào |
+| Save folder | Downloads\yt-dlp\ | any path |
 
-### Step 3: Chạy lệnh tải
+### Step 3: Run download command
 
-Xem `references/commands.md` để lấy lệnh đúng cho từng use case.
+See `references/commands.md` for commands for each use case.
 
-Lệnh cơ bản nhất (video best quality):
+Basic command (best quality video):
 ```powershell
-$PYTHON = scripts/find-python.ps1  # tự detect Python path
+$PYTHON = scripts/find-python.ps1  # auto-detect Python path
 & $PYTHON -m yt_dlp `
   -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" `
   --merge-output-format mp4 `
@@ -74,9 +74,9 @@ $PYTHON = scripts/find-python.ps1  # tự detect Python path
   "<URL>"
 ```
 
-### Step 4: Gửi về Telegram (auto)
+### Step 4: Send to Telegram (auto)
 
-Sau khi tải xong:
+After download completes:
 
 ```powershell
 $file = Get-ChildItem "$env:USERPROFILE\Downloads\yt-dlp\" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
@@ -84,32 +84,32 @@ $sizeMB = [math]::Round($file.Length / 1MB, 2)
 ```
 
 - File <= 50MB:
-  1. Copy file vào workspace tạm: `$env:USERPROFILE\.openclaw\workspace\tmp_send.<ext>`
-  2. Dùng `message` tool: action=send, filePath=workspace path, caption="✅ {title} ({sizeMB}MB)"
-  3. Xóa file tạm sau khi gửi xong
+  1. Copy file to temp workspace: `$env:USERPROFILE\.openclaw\workspace\tmp_send.<ext>`
+  2. Use `message` tool: action=send, filePath=workspace path, caption="✅ {title} ({sizeMB}MB)"
+  3. Delete temp file after sending
 
-- File > 50MB: Báo user "File {sizeMB}MB vượt giới hạn 50MB của Telegram. Đã lưu tại: {path}"
+- File > 50MB: Notify user "File {sizeMB}MB exceeds Telegram's 50MB limit. Saved at: {path}"
 
-- Nếu lỗi khi gửi: thông báo lỗi + đường dẫn file trên máy
+- If send error: notify error + file path on machine
 
-## Nền tảng hỗ trợ
+## Supported Platforms
 
-Xem `references/platforms.md` để biết danh sách đầy đủ và lưu ý riêng cho từng nền tảng.
+See `references/platforms.md` for full list and platform-specific notes.
 
-Các nền tảng phổ biến: YouTube, TikTok, Facebook, Instagram, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, Bilibili, Dailymotion, Pinterest, LinkedIn...
+Popular platforms: YouTube, TikTok, Facebook, Instagram, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, Bilibili, Dailymotion, Pinterest, LinkedIn...
 
-## Xử lý lỗi
+## Troubleshooting
 
-Xem `references/troubleshooting.md` để xử lý các lỗi thường gặp:
-- Lỗi cài đặt / không tìm thấy Python
+See `references/troubleshooting.md` for common errors:
+- Installation errors / Python not found
 - HTTP 429 (rate limit)
-- Bot detection / cần đăng nhập
+- Bot detection / login required
 - ffmpeg not found
-- File quá lớn
+- File too large
 
-## Lưu ý quan trọng
+## Important Notes
 
-- Playlist > 50 video: hỏi user muốn tải bao nhiêu trước khi chạy
-- Nội dung private (Instagram, Twitter): dùng `--cookies-from-browser chrome`
-- Rate limit: thêm `--sleep-interval 3 --max-sleep-interval 8`
-- Update yt-dlp thường xuyên: `python -m pip install -U yt-dlp`
+- Playlist > 50 videos: ask user how many to download before running
+- Private content (Instagram, Twitter): use `--cookies-from-browser chrome`
+- Rate limit: add `--sleep-interval 3 --max-sleep-interval 8`
+- Update yt-dlp regularly: `python -m pip install -U yt-dlp`
