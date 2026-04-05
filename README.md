@@ -11,6 +11,24 @@ A skill can belong to multiple categories.
 
 ---
 
+## ⚡ Download All Skills at Once
+
+```powershell
+# Windows - clone and install all skills in one command
+git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git && `
+Copy-Item -Recurse openclaw-skills-mcbai-en\skills\*\* $env:USERPROFILE\.agents\skills\
+```
+
+```bash
+# macOS / Linux
+git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git && \
+cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
+```
+
+> This command copies all skills from every category into `~/.agents/skills/` at once.
+
+---
+
 ## All Skills
 
 | Skill | Description | Category |
@@ -98,12 +116,28 @@ youtube-channel-compare + youtube-scheduler → optimize posting schedule
 
 ## Installation
 
-### Step 1 - Clone repo
+### Install All Skills (fastest)
+
+```powershell
+# Windows
+git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git && `
+Copy-Item -Recurse openclaw-skills-mcbai-en\skills\*\* $env:USERPROFILE\.agents\skills\
+```
+
+```bash
+# macOS / Linux
+git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git && \
+cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
+```
+
+### Install a Single Skill
+
+#### Step 1 - Clone repo
 ```powershell
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 ```
 
-### Step 2 - Copy skill to OpenClaw
+#### Step 2 - Copy skill to OpenClaw
 ```powershell
 # Windows - example: install youtube-content-analyzer
 Copy-Item -Recurse openclaw-skills-mcbai-en\skills\youtube\youtube-content-analyzer $env:USERPROFILE\.agents\skills\
