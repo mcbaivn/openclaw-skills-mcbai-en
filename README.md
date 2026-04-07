@@ -24,7 +24,7 @@ npx clawhub@latest install download-aio
 npx clawhub@latest install subtitle-translator-mcbai
 npx clawhub@latest install content-research-mcbai
 npx clawhub@latest install content-writer-mcbai
-npx clawhub@latest install facebook-management-skills-by-mcbai
+npx clawhub@latest install mcbaivn-facebook-page-manager
 ```
 
 > Skills are automatically downloaded to `~/.agents/skills/` — no git required.
@@ -96,7 +96,7 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 | [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate video subtitles before posting to social media | `npx clawhub@latest install subtitle-translator-mcbai` |
 | [content-research](skills/content/content-research/) | Find trending content to write about | `npx clawhub@latest install content-research-mcbai` |
 | [content-writer](skills/content/content-writer/) | Write Facebook posts, LinkedIn articles, TikTok captions... | `npx clawhub@latest install content-writer-mcbai` |
-| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Post text/photo/video/Reels/Story, schedule posts, manage comments on Facebook Page | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Post text/photo/video/Reels/Story, schedule posts, manage comments on Facebook Page | `npx clawhub@latest install mcbaivn-facebook-page-manager` |
 
 ---
 
@@ -104,9 +104,9 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 
 | Skill | Description | When to use | Install |
 |-------|-------------|-------------|---------|
-| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Post text/photo/video/Reels/Story to Fanpage | Auto-post content to Facebook Page | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
-| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Schedule posts with exact time | Plan content calendar in advance | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
-| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Manage comments & auto-reply | Engage with audience via API | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Post text/photo/video/Reels/Story to Fanpage | Auto-post content to Facebook Page | `npx clawhub@latest install mcbaivn-facebook-page-manager` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Schedule posts with exact time | Plan content calendar in advance | `npx clawhub@latest install mcbaivn-facebook-page-manager` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Manage comments & auto-reply | Engage with audience via API | `npx clawhub@latest install mcbaivn-facebook-page-manager` |
 
 **Suggested pipeline:**
 ```
