@@ -100,6 +100,21 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 
 ---
 
+### 🔵 Facebook
+
+| Skill | Description | When to use | Install |
+|-------|-------------|-------------|---------|
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Post text/photo/video/Reels/Story to Fanpage | Auto-post content to Facebook Page | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Schedule posts with exact time | Plan content calendar in advance | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Manage comments & auto-reply | Engage with audience via API | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
+
+**Suggested pipeline:**
+```
+content-research → content-writer → facebook-page-manager (post + schedule)
+```
+
+---
+
 ### 🎬 YouTube
 *Tools built specifically for YouTube creators*
 
