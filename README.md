@@ -24,6 +24,7 @@ npx clawhub@latest install download-aio
 npx clawhub@latest install subtitle-translator-mcbai
 npx clawhub@latest install content-research-mcbai
 npx clawhub@latest install content-writer-mcbai
+npx clawhub@latest install facebook-management-skills-by-mcbai
 ```
 
 > Skills are automatically downloaded to `~/.agents/skills/` — no git required.
@@ -56,6 +57,7 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 | [youtube-content-analyzer](skills/youtube/youtube-content-analyzer/) | Read SRT/TXT → summary, key points, tags, notable quotes | 🎬 YouTube · ✍️ Content |
 | [youtube-channel-compare](skills/youtube/youtube-channel-compare/) | Compare 2-5 channels: views, engagement, trending score, posting frequency | 🎬 YouTube · 📊 Analytics |
 | [youtube-scheduler](skills/youtube/youtube-scheduler/) | Analyze 50 recent videos → find golden posting time + ASCII heatmap | 🎬 YouTube · 📊 Analytics |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Auto-post & manage Facebook Page: text/photo/video/Reels/Story, schedule, comments | 📱 Social Media |
 
 > 🔄 Updated regularly. **Star this repo** to stay updated!
 
@@ -88,12 +90,13 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 ### 📱 Social Media
 *Manage and optimize content across platforms*
 
-| Skill | Description |
-|-------|-------------|
-| [download-aio](skills/tien-ich/download-aio/) | Download videos/reels/shorts from any platform |
-| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate video subtitles before posting to social media |
-| [content-research](skills/content/content-research/) | Find trending content to write about |
-| [content-writer](skills/content/content-writer/) | Write Facebook posts, LinkedIn articles, TikTok captions... |
+| Skill | Description | Install |
+|-------|-------------|---------|
+| [download-aio](skills/tien-ich/download-aio/) | Download videos/reels/shorts from any platform | `npx clawhub@latest install download-aio` |
+| [subtitle-translator](skills/tien-ich/subtitle-translator/) | Translate video subtitles before posting to social media | `npx clawhub@latest install subtitle-translator-mcbai` |
+| [content-research](skills/content/content-research/) | Find trending content to write about | `npx clawhub@latest install content-research-mcbai` |
+| [content-writer](skills/content/content-writer/) | Write Facebook posts, LinkedIn articles, TikTok captions... | `npx clawhub@latest install content-writer-mcbai` |
+| [facebook-page-manager](skills/social-media/facebook-page-manager/) | Post text/photo/video/Reels/Story, schedule posts, manage comments on Facebook Page | `npx clawhub@latest install facebook-management-skills-by-mcbai` |
 
 ---
 
@@ -185,12 +188,14 @@ openclaw-skills-mcbai-en/
     ├── content/                      ✍️ Content
     │   ├── content-research/
     │   └── content-writer/
-    └── youtube/                      🎬 YouTube
-        ├── README.md
-        ├── youtube-subtitle-extractor/
-        ├── youtube-content-analyzer/
-        ├── youtube-channel-compare/
-        └── youtube-scheduler/
+    ├── youtube/                      🎬 YouTube
+    │   ├── README.md
+    │   ├── youtube-subtitle-extractor/
+    │   ├── youtube-content-analyzer/
+    │   ├── youtube-channel-compare/
+    │   └── youtube-scheduler/
+    └── social-media/                 📱 Social Media
+        └── facebook-page-manager/
 ```
 
 > **Note:** Skills are placed in folders by primary category. A skill can belong to multiple categories (see table above).
