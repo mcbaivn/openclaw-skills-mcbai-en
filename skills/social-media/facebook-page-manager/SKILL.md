@@ -1,14 +1,6 @@
 ---
 name: facebook-page-manager
-description: >
-  Manage and auto-post content to Facebook Fanpage via Graph API.
-  Supports: post text/photo, carousel (multiple images), video, Reels, Story (photo/video),
-  schedule posts (scheduled_publish_time), view/edit/delete scheduled posts,
-  comment on posts, reply to comments, delete comments.
-  Use when user asks to "post to Facebook Page", "schedule Facebook post",
-  "upload video to Fanpage", "post Facebook story", "Facebook carousel",
-  "manage Facebook schedule", "comment on Facebook post", "reply to Facebook comment",
-  or any post/manage content operation on Facebook Page.
+description: Manage and auto-post content to Facebook Fanpage via Graph API. Supports: post text/photo, carousel (multiple images), video, Reels, Story (photo/video), schedule posts, view/edit/delete scheduled posts, comment on posts, reply to comments, delete comments. Use when user asks to "post to Facebook Page", "schedule Facebook post", "upload video to Fanpage", "post Facebook story", "Facebook carousel", "manage Facebook schedule", "comment on Facebook post", "reply to Facebook comment", or any post/manage content operation on Facebook Page.
 ---
 
 # Facebook Page Manager
