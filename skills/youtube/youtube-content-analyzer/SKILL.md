@@ -1,9 +1,13 @@
 ---
 name: youtube-content-analyzer
-description: Analyze YouTube video content from SRT/VTT/TXT files or direct URL. Summarize content, extract key points, analyze main topics, generate reports. Use when user requests "Summarize video X", "Analyze content from SRT", "Key points from [URL]", "Read video content without watching", or needs to quickly understand large batches of videos.
+clawhub_id: mcbaivn-youtube-content-analyzer
+description: |
+  Analyze YouTube video content from SRT/VTT/TXT files or direct URL. Summarize content, extract key points, analyze main topics, generate reports. Use when user requests "Summarize video X", "Analyze content from SRT", "Key points from [URL]", "Read video content without watching", or needs to quickly understand large batches of videos.
 ---
 
 # 🤖 YouTube Content Analyzer
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-content-analyzer`
 
 Read subtitles → summarize content, key points, topic analysis. No need to watch the video.
 
@@ -13,6 +17,8 @@ Read subtitles → summarize content, key points, topic analysis. No need to wat
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-content-analyzer`
 $skillDir = "$env:USERPROFILE\.agents\skills\youtube-content-analyzer"
 New-Item -ItemType Directory -Force "$skillDir\scripts" | Out-Null
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-content-analyzer/SKILL.md" -OutFile "$skillDir\SKILL.md"
@@ -21,6 +27,8 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skill
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-content-analyzer`
 mkdir -p ~/.agents/skills/youtube-content-analyzer/scripts
 curl -o ~/.agents/skills/youtube-content-analyzer/SKILL.md \
   https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-content-analyzer/SKILL.md
@@ -32,12 +40,16 @@ curl -o ~/.agents/skills/youtube-content-analyzer/scripts/analyze_content.py \
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-content-analyzer`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 Copy-Item -Recurse openclaw-skills-mcbai-en\skills\youtube\youtube-content-analyzer $env:USERPROFILE\.agents\skills\
 ```
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-content-analyzer`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 cp -r openclaw-skills-mcbai-en/skills/youtube/youtube-content-analyzer ~/.agents/skills/
 ```

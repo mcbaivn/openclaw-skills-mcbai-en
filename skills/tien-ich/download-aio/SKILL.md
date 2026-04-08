@@ -1,6 +1,8 @@
 ---
 name: download-aio
-description: Download videos, audio, playlists, subtitles, and thumbnails from ANY platform (YouTube, TikTok, Instagram, Facebook, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, and 1000+ more) using yt-dlp. After download, automatically send file to Telegram if under 50MB. Use this skill when the user wants to download video, audio, playlist, reel, short, clip, subtitle, or thumbnail from any website or social media platform. Triggers on phrases like "tải video", "download video", "tải nhạc", "download audio", "tải playlist", "download từ YouTube/TikTok/Facebook/Instagram", "lưu video", "save video", or when user pastes a URL from a video platform.
+clawhub_id: mcbaivn-download-aio
+description: |
+  Download videos, audio, playlists, subtitles, and thumbnails from ANY platform (YouTube, TikTok, Instagram, Facebook, Twitter/X, Twitch, Vimeo, SoundCloud, Reddit, and 1000+ more) using yt-dlp. After download, automatically send file to Telegram if under 50MB. Use this skill when the user wants to download video, audio, playlist, reel, short, clip, subtitle, or thumbnail from any website or social media platform. Triggers on phrases like "tải video", "download video", "tải nhạc", "download audio", "tải playlist", "download từ YouTube/TikTok/Facebook/Instagram", "lưu video", "save video", or when user pastes a URL from a video platform.
 ---
 
 # 📥 Download AIO
@@ -10,7 +12,7 @@ Tải video, audio, playlist, subtitle, thumbnail từ 1000+ nền tảng. Tự 
 ## Cài đặt
 
 ```bash
-npx clawhub@latest install download-aio
+npx clawhub@latest install mcbaivn-download-aio
 ```
 
 > Sau khi cài, chạy script setup dependencies lần đầu:

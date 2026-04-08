@@ -1,9 +1,13 @@
 ---
 name: youtube-subtitle-extractor
-description: Download subtitles (SRT/VTT/TXT) from YouTube videos using yt-dlp. Supports auto-generated and manual subtitles, multilingual. Use when user asks "Download subtitles for video X", "Get subtitles from [URL]", "Extract SRT from @Channel", or needs subtitle files for content analysis.
+clawhub_id: mcbaivn-youtube-subtitle-extractor
+description: |
+  Download subtitles (SRT/VTT/TXT) from YouTube videos using yt-dlp. Supports auto-generated and manual subtitles, multilingual. Use when user asks "Download subtitles for video X", "Get subtitles from [URL]", "Extract SRT from @Channel", or needs subtitle files for content analysis.
 ---
 
 # 📥 YouTube Subtitle Extractor
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-subtitle-extractor`
 
 Download subtitles from YouTube videos or entire channels, output clean `.srt` files.
 
@@ -13,6 +17,8 @@ Download subtitles from YouTube videos or entire channels, output clean `.srt` f
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-subtitle-extractor`
 $skillDir = "$env:USERPROFILE\.agents\skills\youtube-subtitle-extractor"
 New-Item -ItemType Directory -Force "$skillDir\scripts" | Out-Null
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-subtitle-extractor/SKILL.md" -OutFile "$skillDir\SKILL.md"
@@ -21,6 +27,8 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skill
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-subtitle-extractor`
 mkdir -p ~/.agents/skills/youtube-subtitle-extractor/scripts
 curl -o ~/.agents/skills/youtube-subtitle-extractor/SKILL.md \
   https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-subtitle-extractor/SKILL.md
@@ -32,12 +40,16 @@ curl -o ~/.agents/skills/youtube-subtitle-extractor/scripts/extract_subtitles.py
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-subtitle-extractor`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 Copy-Item -Recurse openclaw-skills-mcbai-en\skills\youtube\youtube-subtitle-extractor $env:USERPROFILE\.agents\skills\
 ```
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-subtitle-extractor`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 cp -r openclaw-skills-mcbai-en/skills/youtube/youtube-subtitle-extractor ~/.agents/skills/
 ```

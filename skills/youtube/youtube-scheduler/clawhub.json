@@ -1,0 +1,18 @@
+{
+  "name": "mcbaivn-youtube-scheduler",
+  "clawhub_id": "mcbaivn-youtube-scheduler",
+  "version": "1.0.0",
+  "description": "Analyze a YouTube channel posting schedule to find golden hours with the highest views and engagement. Optimize your content publishing schedule.",
+  "author": "Bang (mcbaivn)",
+  "tags": [
+    "youtube",
+    "scheduler",
+    "analytics",
+    "golden-hour",
+    "engagement",
+    "posting-time"
+  ],
+  "category": "youtube",
+  "install_cmd": "npx clawhub@latest install mcbaivn-youtube-scheduler",
+  "repository": "https://clawhub.com/skills/mcbaivn-youtube-scheduler"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "mcbaivn-content-writer",
+  "clawhub_id": "mcbaivn-content-writer",
+  "version": "1.0.0",
+  "description": "Generate high-quality social media posts from research articles. Supports LinkedIn, Facebook, Twitter/X, TikTok, Threads. 6 formats, 8 tones, EN/VI.",
+  "author": "Bang (mcbaivn)",
+  "tags": [
+    "content",
+    "writer",
+    "linkedin",
+    "facebook",
+    "social-media",
+    "post",
+    "ai"
+  ],
+  "category": "content",
+  "install_cmd": "npx clawhub@latest install mcbaivn-content-writer",
+  "repository": "https://clawhub.com/skills/mcbaivn-content-writer"
+}

@@ -1,9 +1,13 @@
 ---
 name: youtube-scheduler
-description: Analyze a YouTube channel's posting schedule from its 50 most recent videos to find golden posting times - days and hours with highest views and engagement. Use when user asks "Find best time to post for @Channel", "Best time to post for @Channel", "When does this channel usually post", or wants to optimize content posting schedule.
+clawhub_id: mcbaivn-youtube-scheduler
+description: |
+  Analyze a YouTube channel's posting schedule from its 50 most recent videos to find golden posting times - days and hours with highest views and engagement. Use when user asks "Find best time to post for @Channel", "Best time to post for @Channel", "When does this channel usually post", or wants to optimize content posting schedule.
 ---
 
 # ⏰ YouTube Scheduler Analyzer
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-scheduler`
 
 Analyze a channel's posting schedule → find the days and hours with the highest performance.
 
@@ -13,6 +17,8 @@ Analyze a channel's posting schedule → find the days and hours with the highes
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-scheduler`
 $skillDir = "$env:USERPROFILE\.agents\skills\youtube-scheduler"
 New-Item -ItemType Directory -Force "$skillDir\scripts" | Out-Null
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-scheduler/SKILL.md" -OutFile "$skillDir\SKILL.md"
@@ -21,6 +27,8 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skill
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-scheduler`
 mkdir -p ~/.agents/skills/youtube-scheduler/scripts
 curl -o ~/.agents/skills/youtube-scheduler/SKILL.md \
   https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-scheduler/SKILL.md
@@ -32,12 +40,16 @@ curl -o ~/.agents/skills/youtube-scheduler/scripts/analyze_schedule.py \
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-scheduler`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 Copy-Item -Recurse openclaw-skills-mcbai-en\skills\youtube\youtube-scheduler $env:USERPROFILE\.agents\skills\
 ```
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-scheduler`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 cp -r openclaw-skills-mcbai-en/skills/youtube/youtube-scheduler ~/.agents/skills/
 ```

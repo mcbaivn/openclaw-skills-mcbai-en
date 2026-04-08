@@ -1,9 +1,13 @@
 ---
 name: youtube-channel-compare
-description: Compare 2-5 YouTube channels by views, engagement rate, trending score, and posting frequency. Use when user asks "Compare @ChannelA vs @ChannelB", "Which channel is stronger in niche X", or needs competitive analysis data.
+clawhub_id: mcbaivn-youtube-channel-compare
+description: |
+  Compare 2-5 YouTube channels by views, engagement rate, trending score, and posting frequency. Use when user asks "Compare @ChannelA vs @ChannelB", "Which channel is stronger in niche X", or needs competitive analysis data.
 ---
 
 # 📊 YouTube Channel Compare
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-channel-compare`
 
 Compare performance metrics across multiple YouTube channels and generate benchmark reports.
 
@@ -13,6 +17,8 @@ Compare performance metrics across multiple YouTube channels and generate benchm
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-channel-compare`
 $skillDir = "$env:USERPROFILE\.agents\skills\youtube-channel-compare"
 New-Item -ItemType Directory -Force "$skillDir\scripts" | Out-Null
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-channel-compare/SKILL.md" -OutFile "$skillDir\SKILL.md"
@@ -21,6 +27,8 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mcbaivn/openclaw-skill
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-channel-compare`
 mkdir -p ~/.agents/skills/youtube-channel-compare/scripts
 curl -o ~/.agents/skills/youtube-channel-compare/SKILL.md \
   https://raw.githubusercontent.com/mcbaivn/openclaw-skills-mcbai-en/main/skills/youtube/youtube-channel-compare/SKILL.md
@@ -32,12 +40,16 @@ curl -o ~/.agents/skills/youtube-channel-compare/scripts/compare_channels.py \
 
 ```powershell
 # Windows
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-channel-compare`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 Copy-Item -Recurse openclaw-skills-mcbai-en\skills\youtube\youtube-channel-compare $env:USERPROFILE\.agents\skills\
 ```
 
 ```bash
 # macOS / Linux
+
+> 📦 **Install:** `npx clawhub@latest install mcbaivn-youtube-channel-compare`
 git clone https://github.com/mcbaivn/openclaw-skills-mcbai-en.git
 cp -r openclaw-skills-mcbai-en/skills/youtube/youtube-channel-compare ~/.agents/skills/
 ```

@@ -1,6 +1,8 @@
 ---
 name: content-research
-description: Research and discover trending content sources for any topic using web search. Use this skill whenever the user wants to find articles, news, blog posts, or trending content about a specific topic for content creation, LinkedIn posts, social media writing, or content curation. Also trigger when the user mentions "research topic", "find articles about", "trending news", "content sources", "search for content", or wants to gather data/sources before writing posts.
+clawhub_id: mcbaivn-content-research
+description: |
+  Research and discover trending content sources for any topic using web search. Use this skill whenever the user wants to find articles, news, blog posts, or trending content about a specific topic for content creation, LinkedIn posts, social media writing, or content curation. Also trigger when the user mentions "research topic", "find articles about", "trending news", "content sources", "search for content", or wants to gather data/sources before writing posts.
 ---
 
 # Content Research Skill
@@ -8,7 +10,7 @@ description: Research and discover trending content sources for any topic using 
 ## Installation
 
 ```bash
-npx clawhub@latest install content-research-mcbai
+npx clawhub@latest install mcbaivn-content-research
 ```
 
 Search the web for trending articles, news, and content sources on any topic. This skill powers the MCB AI content research pipeline — finding, filtering, scoring, and organizing source material for content creation.

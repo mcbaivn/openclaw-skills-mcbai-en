@@ -1,0 +1,19 @@
+{
+  "name": "mcbaivn-youtube-content-analyzer",
+  "clawhub_id": "mcbaivn-youtube-content-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze YouTube video content from SRT/VTT/TXT files or direct URL. Summarize content, extract key points, analyze topics, generate reports.",
+  "author": "Bang (mcbaivn)",
+  "tags": [
+    "youtube",
+    "content",
+    "analyzer",
+    "srt",
+    "summary",
+    "key-points",
+    "ai"
+  ],
+  "category": "youtube",
+  "install_cmd": "npx clawhub@latest install mcbaivn-youtube-content-analyzer",
+  "repository": "https://clawhub.com/skills/mcbaivn-youtube-content-analyzer"
+}

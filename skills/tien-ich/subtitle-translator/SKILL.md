@@ -1,6 +1,8 @@
 ---
 name: subtitle-translator-mcbai
-description: Translate SRT subtitle files into any target language using AI. Processes subtitles in batches to handle large files efficiently, preserves exact SRT format and timing, and outputs a new translated SRT file. Use this skill when the user wants to translate subtitles, translate an SRT file, dịch phụ đề, dịch file srt, translate movie subtitles, or asks to convert subtitles to another language. Triggers on phrases like "dịch phụ đề", "translate subtitles", "dịch file srt", "translate srt", "dịch sang tiếng Việt", or when user uploads/pastes an SRT file and asks for translation.
+clawhub_id: mcbaivn-subtitle-translator
+description: |
+  Translate SRT subtitle files into any target language using AI. Processes subtitles in batches to handle large files efficiently, preserves exact SRT format and timing, and outputs a new translated SRT file. Use this skill when the user wants to translate subtitles, translate an SRT file, dịch phụ đề, dịch file srt, translate movie subtitles, or asks to convert subtitles to another language. Triggers on phrases like "dịch phụ đề", "translate subtitles", "dịch file srt", "translate srt", "dịch sang tiếng Việt", or when user uploads/pastes an SRT file and asks for translation.
 ---
 
 # 🌐 Subtitle Translator - MCB AI
@@ -10,7 +12,7 @@ Dịch file SRT sang bất kỳ ngôn ngữ nào. Xử lý theo lô (batch), gi�
 ## Cài đặt
 
 ```bash
-npx clawhub@latest install subtitle-translator-mcbai
+npx clawhub@latest install mcbaivn-subtitle-translator
 ```
 
 ## Cách dùng

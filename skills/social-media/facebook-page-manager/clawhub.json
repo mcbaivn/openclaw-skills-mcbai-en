@@ -1,0 +1,17 @@
+{
+  "name": "mcbaivn-facebook-page-manager",
+  "clawhub_id": "mcbaivn-facebook-page-manager",
+  "version": "1.0.0",
+  "description": "Manage and auto-post content to Facebook Fanpage via Graph API. Supports text/photo, carousel, video, Reels, Story, scheduled publishing, comment management.",
+  "author": "Bang (mcbaivn)",
+  "tags": [
+    "facebook",
+    "social-media",
+    "automation",
+    "fanpage",
+    "page-manager"
+  ],
+  "category": "social-media",
+  "install_cmd": "npx clawhub@latest install mcbaivn-facebook-page-manager",
+  "repository": "https://clawhub.com/skills/mcbaivn-facebook-page-manager"
+}
