@@ -31,17 +31,18 @@ if sys.platform == "win32":
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 # ─────────────────────────────────────────────────────────── constants ──
-FFMPEG  = shutil.which("ffmpeg")  or r"C:\Users\PCM\nhq\venv\Scripts\ffmpeg.exe"
-# Prefer Python311 whisper (openai-whisper), fallback to venv
-_WHISPER_PY311 = r"C:\Users\PCM\AppData\Local\Programs\Python\Python311\Scripts\whisper.exe"
-_WHISPER_VENV  = r"C:\Users\PCM\nhq\venv\Scripts\whisper.exe"
-WHISPER = _WHISPER_PY311 if os.path.exists(_WHISPER_PY311) else (shutil.which("whisper") or _WHISPER_VENV)
-# Try system Python311 yt-dlp first, fallback to venv
-# ── Python311 executable for Playwright ─────────────────────────────
-PYTHON311 = r"C:\Users\PCM\AppData\Local\Programs\Python\Python311\python.exe"
+FFMPEG  = shutil.which("ffmpeg") or "ffmpeg"
+# Prefer whisper from PATH, fallback to python -m whisper
+WHISPER = shutil.which("whisper") or None
+# Python executable for Playwright subprocess
+PYTHON311 = shutil.which("python") or sys.executable
 
 # ── Douyin cookie file (cookie string format) ─────────────────────────
-DOUYIN_COOKIE_FILE = Path(r"C:\Users\PCM\.openclaw\workspace\skills\douyin-dubber\douyin_cookies.txt")
+# Default: cookie file next to this script → skills/douyin-dubber/douyin_cookies.txt
+DOUYIN_COOKIE_FILE = Path(os.environ.get(
+    "DOUYIN_COOKIE_FILE",
+    Path(__file__).parent.parent / "douyin_cookies.txt"
+))
 
 # ══════════════════════════════════════════════════ PROGRESS REPORTER ══
 class ProgressReporter:
