@@ -7,11 +7,78 @@ description: >
   mix original audio at 10% + new TTS voice → burn ASS subtitle overlay (positioned over original sub area).
   Use when: (1) dubbing/translating a Douyin or TikTok video, (2) replacing original voice with
   translated TTS, (3) any "tải video douyin rồi dịch/lồng tiếng" request.
+metadata:
+  openclaw:
+    credentials:
+      - id: douyin_cookie
+        label: Douyin Session Cookie
+        kind: file
+        path: skills/douyin-dubber/douyin_cookies.txt
+        env: DOUYIN_COOKIE_FILE
+        required: true
+        sensitive: true
+        description: >
+          Exported Douyin session cookie (header string format). Required for downloading videos.
+          Never share this file — it grants access to your Douyin account.
+          Recommend using a throwaway/test account. Rotate cookies after use.
+      - id: elevenlabs_api_key
+        label: ElevenLabs API Key
+        kind: secret
+        env: ELEVENLABS_API_KEY
+        required: false
+        sensitive: true
+        description: >
+          Optional. Only needed if you choose ElevenLabs TTS (highest quality).
+          Free tier: 10,000 chars/month. Create a scoped key at https://elevenlabs.io.
+    requires:
+      bins:
+        - ffmpeg
+        - python
+      python_packages:
+        - playwright
+        - openai-whisper
+      optional_packages:
+        - gtts
+        - edge-tts
 ---
 
 # Douyin Auto Dubber
 
 Full pipeline: Playwright download → Whisper transcribe → AI translate → TTS → FFmpeg ASS subtitle mix.
+
+---
+
+## ⚠️ Bảo Mật & Cookie
+
+**Skill này chạy hoàn toàn local** — không upload video hay dữ liệu lên server nào ngoài các TTS provider bạn chọn.
+
+### Credentials cần thiết
+
+| Credential | Bắt buộc | Mô tả |
+|-----------|----------|-------|
+| `douyin_cookies.txt` | ✅ Có | Cookie Douyin để tải video |
+| ElevenLabs API key | ❌ Không | Chỉ cần nếu chọn ElevenLabs TTS |
+
+### Cookie Douyin — Lưu ý quan trọng
+
+> ⚠️ **Cookie session = quyền truy cập tài khoản Douyin của bạn.** Không chia sẻ file này với ai.
+
+**Khuyến nghị bảo mật:**
+- 🔐 Dùng **tài khoản throwaway/test** — không dùng tài khoản chính
+- 📁 Lưu cookie vào `skills/douyin-dubber/douyin_cookies.txt` (chỉ local, không được commit lên git)
+- ♻️ **Rotate cookie** sau khi dùng xong (đăng xuất → đăng nhập lại → export lại)
+- 🚫 Không paste cookie vào bất kỳ tool/website nào khác
+
+**Override đường dẫn cookie bằng env var:**
+```bash
+export DOUYIN_COOKIE_FILE=/path/to/your/cookies.txt   # macOS/Linux
+$env:DOUYIN_COOKIE_FILE = "C:\your\path\cookies.txt"  # Windows
+```
+
+### ElevenLabs API Key
+- Tạo key **scoped** chỉ với permission "Text to Speech" tại https://elevenlabs.io
+- Không hardcode key vào script — nhập interactive khi script hỏi
+- Dùng gTTS hoặc Edge TTS nếu không muốn cung cấp API key
 
 ---
 
