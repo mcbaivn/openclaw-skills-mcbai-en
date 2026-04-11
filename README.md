@@ -24,6 +24,7 @@ npx clawhub@latest install mcbaivn-youtube-scheduler
 npx clawhub@latest install mcbaivn-content-research
 npx clawhub@latest install mcbaivn-content-writer
 npx clawhub@latest install mcbaivn-facebook-page-manager
+npx clawhub@latest install douyin-dubber
 ```
 
 > Skills are automatically downloaded to `~/.agents/skills/` — no git knowledge required.
@@ -44,7 +45,7 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 
 ---
 
-## All Skills (9 skills)
+## All Skills (10 skills)
 
 | Skill | Description | Install | Category |
 |-------|-------------|---------|----------|
@@ -56,6 +57,7 @@ cp -r openclaw-skills-mcbai-en/skills/*/* ~/.agents/skills/
 | [youtube-scheduler](skills/youtube/youtube-scheduler/) | Find golden posting hours, ASCII heatmap | `npx clawhub@latest install mcbaivn-youtube-scheduler` | 🎬 YouTube |
 | [content-research](skills/content/content-research/) | Find trending articles & news (Brave + Tavily) | `npx clawhub@latest install mcbaivn-content-research` | ✍️ Content |
 | [content-writer](skills/content/content-writer/) | Write multi-platform posts (6 formats, 8 tones, EN/VI) | `npx clawhub@latest install mcbaivn-content-writer` | ✍️ Content |
+| [douyin-dubber](skills/content/douyin-dubber/) | Auto-dub Douyin/TikTok videos into any language | `npx clawhub@latest install douyin-dubber` | ✍️ Content |
 | [facebook-page-manager](skills/social-media/facebook-page-manager/) | Auto-post & manage Facebook Page content | `npx clawhub@latest install mcbaivn-facebook-page-manager` | 📱 Social Media |
 
 > 🔄 Updated regularly. **Star the repo** to stay notified!
@@ -98,10 +100,12 @@ youtube-channel-compare + youtube-scheduler → optimize posting schedule
 |-------|-------------|---------|
 | [content-research](skills/content/content-research/) | Find trending articles & news from the web (Brave + Tavily in parallel) | `npx clawhub@latest install mcbaivn-content-research` |
 | [content-writer](skills/content/content-writer/) | Write posts for LinkedIn, Facebook, Twitter/X, TikTok, Threads | `npx clawhub@latest install mcbaivn-content-writer` |
+| [douyin-dubber](skills/content/douyin-dubber/) | Auto-dub Douyin/TikTok videos: download → transcribe (Whisper) → translate → TTS → mix | `npx clawhub@latest install douyin-dubber` |
 
 **Suggested pipeline:**
 ```
 content-research → content-writer → facebook-page-manager
+douyin-dubber → facebook-page-manager (post dubbed video)
 ```
 
 ---
@@ -131,7 +135,8 @@ openclaw-skills-mcbai-en/
     │   └── youtube-scheduler/
     ├── content/           ✍️ Content
     │   ├── content-research/
-    │   └── content-writer/
+    │   ├── content-writer/
+    │   └── douyin-dubber/
     └── social-media/      📱 Social Media
         └── facebook-page-manager/
 ```
